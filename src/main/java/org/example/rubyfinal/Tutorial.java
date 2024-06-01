@@ -181,29 +181,29 @@ public class Tutorial {
         }
         else if(currentStep ==3){
 
-            tutorialCubeState[2][0][0] = 2;
-            tutorialCubeState[2][0][1] = 2;
-            tutorialCubeState[2][0][2] = 2;
-            tutorialCubeState[2][1][1] = 2;
+            tutorialCubeState[1][2][0] = 2;
+            tutorialCubeState[1][2][1] = 2;
+            tutorialCubeState[1][2][2] = 2;
+            tutorialCubeState[1][1][1] = 2;
 
-            tutorialCubeState[3][0][0] = 3;
-            tutorialCubeState[3][0][1] = 3;
-            tutorialCubeState[3][0][2] = 3;
-            tutorialCubeState[3][1][1] = 3;
-            tutorialCubeState[3][2][1] = 3;
+            tutorialCubeState[0][2][0] = 3;
+            tutorialCubeState[0][2][1] = 3;
+            tutorialCubeState[0][2][2] = 3;
+            tutorialCubeState[0][0][1] = 3;
+            tutorialCubeState[0][1][1] = 3;
 
-            tutorialCubeState[4][0][0]=4;
-            tutorialCubeState[4][0][1]=4;
-            tutorialCubeState[4][0][2]=4;
-            tutorialCubeState[4][1][0]=4;
-            tutorialCubeState[4][1][1]=4;
-            tutorialCubeState[4][1][2]=4;
-            tutorialCubeState[4][2][0]=4;
-            tutorialCubeState[4][2][1]=4;
-            tutorialCubeState[4][2][2]=4;
+            tutorialCubeState[5][0][0]=4;
+            tutorialCubeState[5][0][1]=4;
+            tutorialCubeState[5][0][2]=4;
+            tutorialCubeState[5][1][0]=4;
+            tutorialCubeState[5][1][1]=4;
+            tutorialCubeState[5][1][2]=4;
+            tutorialCubeState[5][2][0]=4;
+            tutorialCubeState[5][2][1]=4;
+            tutorialCubeState[5][2][2]=4;
 
-            tutorialCubeState[5][1][1] = 5;
-            tutorialCubeState[5][1][0] = 2;
+            tutorialCubeState[4][1][1] = 5;
+            tutorialCubeState[4][2][1] = 2;
 
 
 
@@ -274,6 +274,35 @@ public class Tutorial {
             tutorialCubeState[5][1][1]=5;
 
         }
+        else if(currentStep ==3){
+
+            tutorialCubeState[1][2][0] = 2;
+            tutorialCubeState[1][2][1] = 2;
+            tutorialCubeState[1][2][2] = 2;
+            tutorialCubeState[1][1][1] = 2;
+
+            tutorialCubeState[0][2][0] = 3;
+            tutorialCubeState[0][2][1] = 3;
+            tutorialCubeState[0][2][2] = 3;
+            tutorialCubeState[0][0][1] = 3;
+            tutorialCubeState[0][1][1] = 3;
+
+            tutorialCubeState[5][0][0]=4;
+            tutorialCubeState[5][0][1]=4;
+            tutorialCubeState[5][0][2]=4;
+            tutorialCubeState[5][1][0]=4;
+            tutorialCubeState[5][1][1]=4;
+            tutorialCubeState[5][1][2]=4;
+            tutorialCubeState[5][2][0]=4;
+            tutorialCubeState[5][2][1]=4;
+            tutorialCubeState[5][2][2]=4;
+
+            tutorialCubeState[4][1][1] = 5;
+            tutorialCubeState[4][2][1] = 0;
+
+
+
+        }
 
     }
 
@@ -335,6 +364,37 @@ public class Tutorial {
 
             tutorialCubeState[5][0][2]=4;
             tutorialCubeState[5][1][1]=5;
+
+        }
+        else if(currentStep ==3){
+
+            tutorialCubeState[1][2][0] = 2;
+            tutorialCubeState[1][2][1] = 2;
+            tutorialCubeState[1][2][2] = 2;
+            tutorialCubeState[1][1][0] = 3;
+            tutorialCubeState[1][1][1] = 2;
+
+
+            tutorialCubeState[0][2][0] = 3;
+            tutorialCubeState[0][2][1] = 3;
+            tutorialCubeState[0][2][2] = 3;
+            tutorialCubeState[0][1][1] = 3;
+            tutorialCubeState[0][1][2] = 2;
+
+            tutorialCubeState[5][0][0]=4;
+            tutorialCubeState[5][0][1]=4;
+            tutorialCubeState[5][0][2]=4;
+            tutorialCubeState[5][1][0]=4;
+            tutorialCubeState[5][1][1]=4;
+            tutorialCubeState[5][1][2]=4;
+            tutorialCubeState[5][2][0]=4;
+            tutorialCubeState[5][2][1]=4;
+            tutorialCubeState[5][2][2]=4;
+
+            tutorialCubeState[4][1][1] = 5;
+
+
+
 
         }
     }
