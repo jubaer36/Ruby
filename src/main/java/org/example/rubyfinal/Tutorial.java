@@ -114,11 +114,23 @@ public class Tutorial {
     }
 
     public void onStep4ButtonClicked(ActionEvent event) {
-        stepNameLabel.setText("White Edge");
+        setAllIntStepsButtonInvisible();
+        currentStep = 4;
+        stepNameLabel.setText("Yellow Cross");
+        intStateButton1.setText("One Dot");
+        intStateButton1.setVisible(true);
+        intStateButton2.setText("L Shape");
+        intStateButton2.setVisible(true);;
+
     }
 
     public void onStep5ButtonClicked(ActionEvent event) {
-        stepNameLabel.setText("White Edge");
+        setAllIntStepsButtonInvisible();
+        currentStep = 5;
+        stepNameLabel.setText("Yellow Edge");
+        intStateButton1.setText("Switch Edges");
+        intStateButton1.setVisible(true);
+
     }
 
     public void onStep6ButtonClicked(ActionEvent event) {
@@ -207,6 +219,66 @@ public class Tutorial {
 
 
 
+        }
+        else if(currentStep ==4){
+            tutorialCubeState[4][1][1] = 5;
+            tutorialCubeState[0][0][1] = 5;
+            tutorialCubeState[1][0][1] = 5;
+            tutorialCubeState[2][0][1] = 5;
+            tutorialCubeState[3][0][1] = 5;
+
+
+        }
+        else if(currentStep ==5){
+            tutorialCubeState[1][2][0] = 2;
+            tutorialCubeState[1][2][1] = 2;
+            tutorialCubeState[1][2][2] = 2;
+            tutorialCubeState[1][1][0] = 2;
+            tutorialCubeState[1][1][1] = 2;
+            tutorialCubeState[1][1][2] = 2;
+            tutorialCubeState[1][0][1] = 2;
+
+            tutorialCubeState[0][2][0] = 3;
+            tutorialCubeState[0][2][1] = 3;
+            tutorialCubeState[0][2][2] = 3;
+            tutorialCubeState[0][1][0] = 3;
+            tutorialCubeState[0][1][1] = 3;
+            tutorialCubeState[0][1][2] = 3;
+            tutorialCubeState[0][0][1] = 0;
+
+            tutorialCubeState[2][2][0] = 1;
+            tutorialCubeState[2][2][1] = 1;
+            tutorialCubeState[2][2][2] = 1;
+            tutorialCubeState[2][1][0] = 1;
+            tutorialCubeState[2][1][1] = 1;
+            tutorialCubeState[2][1][2] = 1;
+            tutorialCubeState[2][0][1] = 1;
+
+            tutorialCubeState[3][2][0] = 0;
+            tutorialCubeState[3][2][1] = 0;
+            tutorialCubeState[3][2][2] = 0;
+            tutorialCubeState[3][1][0] = 0;
+            tutorialCubeState[3][1][1] = 0;
+            tutorialCubeState[3][1][2] = 0;
+            tutorialCubeState[3][0][1] = 3;
+
+            tutorialCubeState[4][0][1]=5;
+            tutorialCubeState[4][1][1]=5;
+            tutorialCubeState[4][2][1]=5;
+            tutorialCubeState[4][1][0]=5;
+            tutorialCubeState[4][1][2]=5;
+
+
+
+            tutorialCubeState[5][0][0]=4;
+            tutorialCubeState[5][0][1]=4;
+            tutorialCubeState[5][0][2]=4;
+            tutorialCubeState[5][1][0]=4;
+            tutorialCubeState[5][1][1]=4;
+            tutorialCubeState[5][1][2]=4;
+            tutorialCubeState[5][2][0]=4;
+            tutorialCubeState[5][2][1]=4;
+            tutorialCubeState[5][2][2]=4;
         }
 
 
@@ -299,6 +371,16 @@ public class Tutorial {
 
             tutorialCubeState[4][1][1] = 5;
             tutorialCubeState[4][2][1] = 0;
+
+
+
+        }
+        else if(currentStep ==4){
+            tutorialCubeState[4][1][1] = 5;
+            tutorialCubeState[4][1][0] = 5;
+            tutorialCubeState[4][0][1] = 5;
+            tutorialCubeState[0][0][1] = 5;
+            tutorialCubeState[1][0][1] = 5;
 
 
 
