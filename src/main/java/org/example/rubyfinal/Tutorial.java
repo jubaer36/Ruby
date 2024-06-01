@@ -203,12 +203,12 @@ public class Tutorial {
             tutorialCubeState[0][0][1]= 0;
             tutorialCubeState[0][1][1]= 0;
             tutorialCubeState[0][0][0]= 0;
-            tutorialCubeState[0][2][2]= 0;
+            tutorialCubeState[0][2][2]= 4;
 
             tutorialCubeState[1][1][1]= 1;
             tutorialCubeState[1][0][1]= 1;
             tutorialCubeState[1][0][2]= 1;
-            tutorialCubeState[1][2][0]= 4;
+            tutorialCubeState[1][2][0]= 1;
 
             tutorialCubeState[2][0][1]= 2;
             tutorialCubeState[2][0][0]= 2;
@@ -229,8 +229,8 @@ public class Tutorial {
             tutorialCubeState[4][2][0]=4;
             tutorialCubeState[4][2][1]=4;
 
-            tutorialCubeState[5][0][2]=1;
-            tutorialCubeState[5][1][1]=1;
+            tutorialCubeState[5][0][2]=0;
+            tutorialCubeState[5][1][1]=5;
 
         }
 
