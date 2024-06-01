@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Polygon?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="682.0" prefWidth="818.0" style="-fx-background-color: black; -fx-border-width: 2px;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.rubyfinal.MakeCube">
+    <children>
+        <GridPane fx:id="upperFace" gridLinesVisible="true" hgap="2.0" layoutX="275.0" layoutY="137.0" prefHeight="120.0" prefWidth="120.0" style="-fx-border-color: black; -fx-border-width: 2px;" vgap="2.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <padding>
+                <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+            </padding>
+        </GridPane>
+        <GridPane fx:id="frontFace" gridLinesVisible="true" hgap="2.0" layoutX="275.0" layoutY="254.0" prefHeight="120.0" prefWidth="120.0" style="-fx-border-width: 2px;" vgap="2.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+        </GridPane>
+        <GridPane fx:id="botttomFace" gridLinesVisible="true" hgap="2.0" layoutX="275.0" layoutY="376.0" prefHeight="120.0" prefWidth="120.0" style="-fx-border-color: black; -fx-border-width: 2px;" vgap="2.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+        </GridPane>
+        <GridPane fx:id="rightFace" gridLinesVisible="true" hgap="2.0" layoutX="395.0" layoutY="254.0" prefHeight="120.0" prefWidth="120.0" style="-fx-border-color: black; -fx-border-width: 2px;" vgap="2.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+        </GridPane>
+        <GridPane fx:id="leftFace" gridLinesVisible="true" hgap="2.0" layoutX="155.0" layoutY="254.0" prefHeight="120.0" prefWidth="120.0" style="-fx-border-color: black; -fx-border-width: 2px;" vgap="2.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+        </GridPane>
+        <GridPane fx:id="backFace" gridLinesVisible="true" hgap="2.0" layoutX="515.0" layoutY="254.0" prefHeight="120.0" prefWidth="120.0" style="-fx-border-color: black; -fx-border-width: 2px;" vgap="2.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+        </GridPane>
+        <Button layoutX="30.0" layoutY="57.0" mnemonicParsing="false" onAction="#pressButtonRotateU" prefHeight="26.0" prefWidth="76.0" style="-fx-background-color: rgb(53, 121, 222);" text="Rotate U" textFill="WHITE" />
+        <Button layoutX="30.0" layoutY="157.0" mnemonicParsing="false" onAction="#pressButtonRotateD" style="-fx-background-color: rgb(53, 121, 222);" text="Rotate D" textFill="WHITE" />
+        <Button layoutX="29.0" layoutY="108.0" mnemonicParsing="false" onAction="#pressButtonRotateU_Dash" style="-fx-background-color: rgb(53, 121, 222);" text="Rotate U'" textFill="WHITE" />
+        <Button layoutX="29.0" layoutY="210.0" mnemonicParsing="false" onAction="#pressButtonRotateD_Dash" style="-fx-background-color: rgb(53, 121, 222);" text="Rotate D'" textFill="WHITE" />
+        <Button layoutX="27.0" layoutY="261.0" mnemonicParsing="false" onAction="#pressButtonRotateR" prefHeight="26.0" prefWidth="83.0" style="-fx-background-color: rgb(53, 121, 222);" text="Rotate R" textFill="WHITE" />
+        <Button layoutX="26.0" layoutY="308.0" mnemonicParsing="false" onAction="#pressButtonRotateR_Dash" prefHeight="26.0" prefWidth="83.0" style="-fx-background-color: rgb(53, 121, 222);" text="Rotate R'" textFill="WHITE" />
+        <Button layoutX="28.0" layoutY="354.0" mnemonicParsing="false" onAction="#pressButtonRotateL" prefHeight="26.0" prefWidth="83.0" style="-fx-background-color: rgb(53, 121, 222);" text="Rotate L" textFill="WHITE" />
+        <Button layoutX="30.0" layoutY="401.0" mnemonicParsing="false" onAction="#pressButtonRotateL_Dash" prefHeight="26.0" prefWidth="83.0" style="-fx-background-color: rgb(53, 121, 222);" text="Rotate L'" textFill="WHITE" />
+        <Button layoutX="688.0" layoutY="248.0" mnemonicParsing="false" onAction="#pressRotateX_Axis" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: rgb(53, 121, 222);" text="X+ Axis" textFill="WHITE" />
+        <Button layoutX="688.0" layoutY="197.0" mnemonicParsing="false" onAction="#pressRotateX_Axis_Dash" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: rgb(53, 121, 222);" text="X- Axis" textFill="WHITE" />
+        <Button layoutX="687.0" layoutY="341.0" mnemonicParsing="false" onAction="#pressRotateY_Axis_Dash" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: rgb(53, 121, 222);" text="Y- Axis" textFill="WHITE" />
+        <Button layoutX="687.0" layoutY="295.0" mnemonicParsing="false" onAction="#pressRotateY_Axis" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: rgb(53, 121, 222);" text="Y+ Axis" textFill="WHITE" />
+        <Button fx:id="colorChangeButton" layoutX="606.0" layoutY="32.0" mnemonicParsing="false" onAction="#pressColorChange" prefHeight="38.0" prefWidth="66.0" />
+        <Button layoutX="30.0" layoutY="450.0" mnemonicParsing="false" onAction="#pressRotateF" prefHeight="26.0" prefWidth="83.0" style="-fx-background-color: rgb(53, 121, 222);" text="Rotate F" textFill="WHITE" />
+        <Button layoutX="30.0" layoutY="501.0" mnemonicParsing="false" onAction="#pressRotateF_Dash" prefHeight="24.0" prefWidth="83.0" style="-fx-background-color: rgb(53, 121, 222);" text="Rotate F'" textFill="WHITE" />
+        <Button layoutX="30.0" layoutY="556.0" mnemonicParsing="false" onAction="#pressRotateB" prefHeight="24.0" prefWidth="83.0" style="-fx-background-color: rgb(53, 121, 222);" text="Rotate B" textFill="WHITE" />
+        <Button layoutX="29.0" layoutY="607.0" mnemonicParsing="false" onAction="#pressRotateB_Dash" prefHeight="24.0" prefWidth="86.0" style="-fx-background-color: rgb(53, 121, 222);" text="Rotate B'" textFill="WHITE" />
+        <Polygon fx:id="fronPoly1" fill="DODGERBLUE" layoutX="436.0" layoutY="405.0" points="87.20001220703125, 103.79998779296875, 131.20001220703125, 123.79998779296875, 131.20001220703125, 67.0, 87.20001220703125, 49.0" stroke="BLACK" strokeType="INSIDE" />
+        <Polygon fx:id="fronPoly4" fill="DODGERBLUE" layoutX="472.0" layoutY="485.0" points="51.20001220703125, 71.0, 96.0, 90.20001220703125, 95.20001220703125, 43.79998779296875, 51.20001220703125, 23.79998779296875" stroke="BLACK" strokeType="INSIDE" />
+        <Polygon fx:id="fronPoly7" fill="DODGERBLUE" layoutX="429.0" layoutY="485.0" points="94.20001220703125, 122.20001220703125, 139.0, 141.4000244140625, 139.0, 90.20001220703125, 94.20001220703125, 70.20001220703125" stroke="BLACK" strokeType="INSIDE" />
+        <Polygon fx:id="fronPoly2" fill="DODGERBLUE" layoutX="509.0" layoutY="447.0" points="58.20001220703125, 81.79998779296875, 99.79998779296875, 99.4000244140625, 99.79998779296875, 41.0, 58.20001220703125, 25.0" stroke="BLACK" strokeType="INSIDE" />
+        <Polygon fx:id="fronPoly5" fill="DODGERBLUE" layoutX="519.0" layoutY="505.0" points="48.20001220703125, 70.20001220703125, 89.79998779296875, 88.5999755859375, 89.79998779296875, 39.79998779296875, 48.20001220703125, 23.79998779296875" stroke="BLACK" strokeType="INSIDE" />
+        <Polygon fx:id="fronPoly8" fill="DODGERBLUE" layoutX="499.0" layoutY="545.0" points="69.0, 81.4000244140625, 109.79998779296875, 99.79998779296875, 109.79998779296875, 48.5999755859375, 69.0, 30.20001220703125" stroke="BLACK" strokeType="INSIDE" />
+        <Polygon fx:id="fronPoly3" fill="DODGERBLUE" layoutX="551.0" layoutY="467.0" points="57.79998779296875, 77.79998779296875, 105.800048828125, 101.79998779296875, 105.800048828125, 40.20001220703125, 57.79998779296875, 23.0" stroke="BLACK" strokeType="INSIDE" />
+        <Polygon fx:id="fronPoly6" fill="DODGERBLUE" layoutX="536.0" layoutY="500.0" points="72.79998779296875, 96.79998779296875, 120.800048828125, 120.0, 120.800048828125, 68.79998779296875, 72.79998779296875, 44.79998779296875" stroke="BLACK" strokeType="INSIDE" />
+        <Polygon fx:id="fronPoly9" fill="DODGERBLUE" layoutX="548.0" layoutY="541.0" points="60.79998779296875, 104.5999755859375, 108.800048828125, 127.0, 108.800048828125, 79.0, 60.79998779296875, 52.5999755859375" stroke="BLACK" strokeType="INSIDE" />
+        <Polygon fx:id="rightPoly1" fill="DODGERBLUE" layoutX="623.0" layoutY="479.0" points="33.800048828125, 89.79998779296875, 71.4000244140625, 57.79998779296875, 71.4000244140625, 5.0, 33.800048828125, 28.20001220703125" stroke="BLACK" strokeType="INSIDE" />
+        <Polygon fx:id="rightPoly4" fill="DODGERBLUE" layoutX="612.0" layoutY="512.0" points="44.800048828125, 108.0, 82.4000244140625, 78.4000244140625, 82.4000244140625, 24.79998779296875, 44.800048828125, 56.79998779296875" stroke="BLACK" strokeType="INSIDE" />
+        <Polygon fx:id="rightPoly7" fill="DODGERBLUE" layoutX="616.0" layoutY="571.0" points="40.800048828125, 97.0, 78.4000244140625, 68.4000244140625, 78.4000244140625, 17.0, 40.800048828125, 49.0" stroke="BLACK" strokeType="INSIDE" />
+        <Polygon fx:id="rightPoly2" fill="DODGERBLUE" layoutX="657.0" layoutY="452.0" points="37.4000244140625, 84.79998779296875, 70.20001220703125, 59.20001220703125, 70.20001220703125, 7.5999755859375, 37.4000244140625, 31.20001220703125" stroke="BLACK" strokeType="INSIDE" />
+        <Polygon fx:id="rightPoly5" fill="DODGERBLUE" layoutX="659.0" layoutY="475.0" points="35.4000244140625, 112.20001220703125, 68.20001220703125, 89.0, 68.20001220703125, 34.5999755859375, 35.4000244140625, 61.79998779296875" stroke="BLACK" strokeType="INSIDE" />
+        <Polygon fx:id="rightPoly8" fill="DODGERBLUE" layoutX="665.0" layoutY="551.0" points="29.4000244140625, 88.4000244140625, 62.20001220703125, 61.0, 62.20001220703125, 9.79998779296875, 29.4000244140625, 37.0" stroke="BLACK" strokeType="INSIDE" />
+        <Polygon fx:id="rightPoly3" fill="DODGERBLUE" layoutX="710.0" layoutY="446.0" points="17.20001220703125, 63.5999755859375, 48.16693115234375, 39.5999755859375, 49.99993896484375, -9.4000244140625, 17.20001220703125, 13.5999755859375" stroke="BLACK" strokeType="INSIDE" />
+        <Polygon fx:id="rightPoly6" fill="DODGERBLUE" layoutX="698.0" layoutY="497.0" points="29.20001220703125, 63.79998779296875, 60.1669921875, 39.79998779296875, 60.1669921875, -11.4000244140625, 29.20001220703125, 12.5999755859375" stroke="BLACK" strokeType="INSIDE" />
+        <Polygon fx:id="rightPoly9" fill="DODGERBLUE" layoutX="710.0" layoutY="532.0" points="17.20001220703125, 80.79998779296875, 48.1669921875, 52.79998779296875, 48.1669921875, 3.20001220703125, 17.20001220703125, 28.79998779296875" stroke="BLACK" strokeType="INSIDE" />
+        <Polygon fx:id="upperPoly8" fill="DODGERBLUE" layoutX="526.0" layoutY="367.0" points="35.20001220703125, 105.0, 83.60003662109375, 123.0, 118.0, 96.20001220703125, 73.20001220703125, 80.20001220703125" stroke="BLACK" strokeType="INSIDE" />
+        <Polygon fx:id="upperPoly5" fill="DODGERBLUE" layoutX="587.0" layoutY="304.0" points="12.20001220703125, 143.20001220703125, 57.0, 159.20001220703125, 95.60003662109375, 138.4000244140625, 53.9000244140625, 122.79998779296875" stroke="BLACK" strokeType="INSIDE" />
+        <Polygon fx:id="upperPoly2" fill="DODGERBLUE" layoutX="643.0" layoutY="254.0" points="-2.0999755859375, 172.79998779296875, 39.60003662109375, 188.4000244140625, 74.60003662109375, 166.0, 32.20001220703125, 155.79998779296875" stroke="BLACK" strokeType="INSIDE" />
+        <Polygon fx:id="upperPoly9" fill="DODGERBLUE" layoutX="562.0" layoutY="392.0" points="46.79998779296875, 98.0, 95.60003662109375, 115.20001220703125, 132.4000244140625, 91.20001220703125, 82.800048828125, 71.20001220703125" stroke="BLACK" strokeType="INSIDE" />
+        <Polygon fx:id="upperPoly6" fill="DODGERBLUE" layoutX="617.0" layoutY="341.0" points="27.0, 122.20001220703125, 77.4000244140625, 143.0, 110.20001220703125, 118.5999755859375, 65.60003662109375, 101.4000244140625" stroke="BLACK" strokeType="INSIDE" />
+        <Polygon fx:id="upperPoly3" fill="DODGERBLUE" layoutX="719.0" layoutY="313.0" points="-36.39996337890625, 129.4000244140625, 8.20001220703125, 146.5999755859375, 40.99993896484375, 123.4000244140625, -1.39996337890625, 107.0" stroke="BLACK" strokeType="INSIDE" />
+        <Polygon fx:id="upperPoly7" fill="DODGERBLUE" layoutX="464.0" layoutY="327.0" points="59.20001220703125, 129.0, 97.20001220703125, 145.0, 135.20001220703125, 120.20001220703125, 97.20001220703125, 109.0" stroke="BLACK" strokeType="INSIDE" />
+        <Polygon fx:id="upperPoly4" fill="DODGERBLUE" layoutX="528.0" layoutY="283.0" points="33.20001220703125, 153.0, 71.20001220703125, 165.79998779296875, 112.9000244140625, 143.79998779296875, 71.20001220703125, 134.5999755859375" stroke="BLACK" strokeType="INSIDE" />
+        <Polygon fx:id="upperPoly1" fill="DODGERBLUE" layoutX="555.0" layoutY="225.0" points="46.04998779296875, 192.5999755859375, 85.9000244140625, 201.79998779296875, 122.60003662109375, 184.79998779296875, 85.9000244140625, 174.20001220703125" stroke="BLACK" strokeType="INSIDE" />
+        <Label layoutX="575.0" layoutY="6.0" prefHeight="26.0" prefWidth="130.0" text="Manually Change Color" textFill="WHITE" />
+    </children>
+</AnchorPane>
