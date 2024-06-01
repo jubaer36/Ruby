@@ -22,6 +22,14 @@ public class Tutorial {
     public static int[][][] tutorialCubeState = new int[6][3][3];
     @FXML
     void initialize(){
+        setAllIntStepsButtonInvisible();
+        stepNameLabel.setText("");
+        resetCubeState();
+
+
+
+    }
+    public void setAllIntStepsButtonInvisible(){
         intStateButton1.setVisible(false);
         intStateButton2.setVisible(false);
         intStateButton3.setVisible(false);
@@ -29,10 +37,6 @@ public class Tutorial {
         intStateButton5.setVisible(false);
         intStateButton6.setVisible(false);
         tryButton.setVisible(false);
-        stepNameLabel.setText("");
-        resetCubeState();
-
-
 
     }
 
@@ -50,6 +54,7 @@ public class Tutorial {
 
 
     public void onStep1ButtonClicked(ActionEvent event) {
+        setAllIntStepsButtonInvisible();
         currentStep = 1;
         stepNameLabel.setText("Step: White Cross");
 
@@ -72,10 +77,27 @@ public class Tutorial {
     }
 
     public void onStep2ButtonClicked(ActionEvent event) {
+        setAllIntStepsButtonInvisible();
         stepNameLabel.setText("White Corner");
+        currentStep = 2;
+        intStateButton1.setText("White sticker to the right");
+        intStateButton1.setVisible(true);
+
+        intStateButton2.setText("White facing you");
+        intStateButton2.setVisible(true);
+
+        intStateButton3.setText("White pointing down");
+        intStateButton3.setVisible(true);
+
+        intStateButton4.setText("Good layer, wrong position");
+        intStateButton4.setVisible(true);
+
+
     }
 
     public void onStep3ButtonClicked(ActionEvent event) {
+        setAllIntStepsButtonInvisible();
+
         stepNameLabel.setText("");
 
     }
@@ -112,6 +134,40 @@ public class Tutorial {
             tutorialCubeState[4][1][2]=4;
 
         }
+        else if(currentStep == 2){
+            tutorialCubeState[0][0][1]= 0;
+            tutorialCubeState[0][1][1]= 0;
+            tutorialCubeState[0][0][0]= 0;
+            tutorialCubeState[0][2][2]= 0;
+
+            tutorialCubeState[1][1][1]= 1;
+            tutorialCubeState[1][0][1]= 1;
+            tutorialCubeState[1][0][2]= 1;
+            tutorialCubeState[1][2][0]= 4;
+
+            tutorialCubeState[2][0][1]= 2;
+            tutorialCubeState[2][0][0]= 2;
+            tutorialCubeState[2][0][2]= 2;
+            tutorialCubeState[2][1][1]= 2;
+
+            tutorialCubeState[3][0][1]= 3;
+            tutorialCubeState[3][0][0]= 3;
+            tutorialCubeState[3][0][2]= 3;
+            tutorialCubeState[3][1][1]= 3;
+
+            tutorialCubeState[4][0][0]=4;
+            tutorialCubeState[4][0][1]=4;
+            tutorialCubeState[4][0][2]=4;
+            tutorialCubeState[4][1][0]=4;
+            tutorialCubeState[4][1][1]=4;
+            tutorialCubeState[4][1][2]=4;
+            tutorialCubeState[4][2][0]=4;
+            tutorialCubeState[4][2][1]=4;
+
+            tutorialCubeState[5][0][2]=1;
+            tutorialCubeState[5][1][1]=1;
+
+        }
 
 
 
@@ -141,6 +197,40 @@ public class Tutorial {
             tutorialCubeState[5][1][1]= 5;
             tutorialCubeState[5][0][1]= 0;
 
+
+        }
+        else if(currentStep == 2){
+            tutorialCubeState[0][0][1]= 0;
+            tutorialCubeState[0][1][1]= 0;
+            tutorialCubeState[0][0][0]= 0;
+            tutorialCubeState[0][2][2]= 0;
+
+            tutorialCubeState[1][1][1]= 1;
+            tutorialCubeState[1][0][1]= 1;
+            tutorialCubeState[1][0][2]= 1;
+            tutorialCubeState[1][2][0]= 4;
+
+            tutorialCubeState[2][0][1]= 2;
+            tutorialCubeState[2][0][0]= 2;
+            tutorialCubeState[2][0][2]= 2;
+            tutorialCubeState[2][1][1]= 2;
+
+            tutorialCubeState[3][0][1]= 3;
+            tutorialCubeState[3][0][0]= 3;
+            tutorialCubeState[3][0][2]= 3;
+            tutorialCubeState[3][1][1]= 3;
+
+            tutorialCubeState[4][0][0]=4;
+            tutorialCubeState[4][0][1]=4;
+            tutorialCubeState[4][0][2]=4;
+            tutorialCubeState[4][1][0]=4;
+            tutorialCubeState[4][1][1]=4;
+            tutorialCubeState[4][1][2]=4;
+            tutorialCubeState[4][2][0]=4;
+            tutorialCubeState[4][2][1]=4;
+
+            tutorialCubeState[5][0][2]=1;
+            tutorialCubeState[5][1][1]=1;
 
         }
 
@@ -237,7 +327,7 @@ public class Tutorial {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("tutorialMakeCube.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Stage stage = new Stage();
-        stage.setTitle("Project-Ruby");
+        stage.setTitle(stepNameLabel.getText());
         stage.setScene(scene);
         stage.show();
 
