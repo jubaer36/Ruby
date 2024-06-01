@@ -200,6 +200,7 @@ public class Tutorial {
 
         }
         else if(currentStep == 2){
+            // White facing you
             tutorialCubeState[0][0][1]= 0;
             tutorialCubeState[0][1][1]= 0;
             tutorialCubeState[0][0][0]= 0;
@@ -259,6 +260,41 @@ public class Tutorial {
             tutorialCubeState[4][1][2]= 4;
             tutorialCubeState[5][1][1]= 5;
 
+
+        }
+        else if(currentStep == 2){
+            // White pointing down
+            tutorialCubeState[0][0][1]= 0;
+            tutorialCubeState[0][1][1]= 0;
+            tutorialCubeState[0][0][0]= 0;
+            tutorialCubeState[0][2][2]= 1;
+
+            tutorialCubeState[1][1][1]= 1;
+            tutorialCubeState[1][0][1]= 1;
+            tutorialCubeState[1][0][2]= 1;
+            tutorialCubeState[1][2][0]= 0;
+
+            tutorialCubeState[2][0][1]= 2;
+            tutorialCubeState[2][0][0]= 2;
+            tutorialCubeState[2][0][2]= 2;
+            tutorialCubeState[2][1][1]= 2;
+
+            tutorialCubeState[3][0][1]= 3;
+            tutorialCubeState[3][0][0]= 3;
+            tutorialCubeState[3][0][2]= 3;
+            tutorialCubeState[3][1][1]= 3;
+
+            tutorialCubeState[4][0][0]=4;
+            tutorialCubeState[4][0][1]=4;
+            tutorialCubeState[4][0][2]=4;
+            tutorialCubeState[4][1][0]=4;
+            tutorialCubeState[4][1][1]=4;
+            tutorialCubeState[4][1][2]=4;
+            tutorialCubeState[4][2][0]=4;
+            tutorialCubeState[4][2][1]=4;
+
+            tutorialCubeState[5][0][2]=4;
+            tutorialCubeState[5][1][1]=5;
 
         }
     }
