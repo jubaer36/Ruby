@@ -94,6 +94,7 @@ public class Tutorial {
     public void onStep7ButtonClicked(ActionEvent event) {
     }
 
+
     public void onIntStateButton1Clicked(ActionEvent event) throws IOException {
         resetCubeState();
         tryButton.setVisible(true);
@@ -111,21 +112,68 @@ public class Tutorial {
             tutorialCubeState[4][1][2]=4;
 
         }
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("tutorialMakeCube.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        Stage stage = new Stage();
-        stage.setTitle("Project-Ruby");
-        stage.setScene(scene);
-        stage.show();
+
+
 
 
     }
     public void onIntStateButton2Clicked(ActionEvent event) {
+        resetCubeState();
+        tryButton.setVisible(true);
+        if(currentStep ==1){
+            tutorialCubeState[0][2][1]= 4;
+            tutorialCubeState[0][1][1]= 0;
+
+            tutorialCubeState[1][1][1]= 1;
+            tutorialCubeState[1][0][1]= 1;
+
+            tutorialCubeState[2][0][1]= 2;
+            tutorialCubeState[2][1][1]= 2;
+
+            tutorialCubeState[3][0][1]= 3;
+            tutorialCubeState[3][1][1]= 3;
+
+            tutorialCubeState[4][1][0]= 4;
+            tutorialCubeState[4][0][1]= 4;
+            tutorialCubeState[4][1][1]= 4;
+            tutorialCubeState[4][1][2]= 4;
+
+            tutorialCubeState[5][1][1]= 5;
+            tutorialCubeState[5][0][1]= 0;
+
+
+        }
+
     }
 
     public void onIntStateButton3Clicked(ActionEvent event) {
+        resetCubeState();
+        tryButton.setVisible(true);
+        if(currentStep==1){
+            tutorialCubeState[0][1][1]= 0;
+            tutorialCubeState[0][1][2]= 4;
+
+            tutorialCubeState[1][1][1]= 1;
+            tutorialCubeState[1][0][1]= 1;
+            tutorialCubeState[1][1][0]= 0;
+
+            tutorialCubeState[2][0][1]= 2;
+            tutorialCubeState[2][1][1]= 2;
+
+            tutorialCubeState[3][0][1]= 3;
+            tutorialCubeState[3][1][1]= 3;
+
+            tutorialCubeState[4][1][0]= 4;
+            tutorialCubeState[4][0][1]= 4;
+            tutorialCubeState[4][1][1]= 4;
+            tutorialCubeState[4][1][2]= 4;
+            tutorialCubeState[5][1][1]= 5;
+
+
+        }
     }
     public void onIntStateButton4Clicked(ActionEvent event) {
+
     }
     public void onIntStateButton5Clicked(ActionEvent event) {
     }
@@ -134,6 +182,13 @@ public class Tutorial {
     }
 
 
-    public void onTryButtonClicked(ActionEvent event) {
+    public void onTryButtonClicked(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("tutorialMakeCube.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage = new Stage();
+        stage.setTitle("Project-Ruby");
+        stage.setScene(scene);
+        stage.show();
+
     }
 }
