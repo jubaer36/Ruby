@@ -173,6 +173,30 @@ public class Tutorial {
         }
     }
     public void onIntStateButton4Clicked(ActionEvent event) {
+        resetCubeState();
+        tryButton.setVisible(true);
+        if(currentStep==1){
+            tutorialCubeState[0][1][0]= 4;
+            tutorialCubeState[0][1][1]= 0;
+
+            tutorialCubeState[1][1][1]= 1;
+            tutorialCubeState[1][0][1]= 1;
+
+
+            tutorialCubeState[2][0][1]= 2;
+            tutorialCubeState[2][1][1]= 2;
+
+            tutorialCubeState[3][0][1]= 3;
+            tutorialCubeState[3][1][1]= 3;
+            tutorialCubeState[3][1][2]= 0;
+
+            tutorialCubeState[4][1][0]= 4;
+            tutorialCubeState[4][0][1]= 4;
+            tutorialCubeState[4][1][1]= 4;
+            tutorialCubeState[4][1][2]= 4;
+
+            tutorialCubeState[5][1][1]= 5;
+        }
 
     }
     public void onIntStateButton5Clicked(ActionEvent event) {
