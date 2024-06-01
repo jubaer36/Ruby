@@ -255,6 +255,7 @@ public class TutorialRotateCube {
 
     public static void rotateMiddle_Y()
     {
+
         int tempColors[][] = new int[4][3];
         tempColors[0][0] = TutorialMakeCube.buttonStates[0][0][1];
         tempColors[0][1] = TutorialMakeCube.buttonStates[0][1][1];
@@ -348,6 +349,7 @@ public class TutorialRotateCube {
     public static void rotateY_Axis()
     {
         rotateY_Axis_Dash();
+//        System.out.println("Running");
         rotateY_Axis_Dash();
         rotateY_Axis_Dash();
     }

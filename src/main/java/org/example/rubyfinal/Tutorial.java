@@ -97,8 +97,19 @@ public class Tutorial {
 
     public void onStep3ButtonClicked(ActionEvent event) {
         setAllIntStepsButtonInvisible();
+        stepNameLabel.setText("Second Layer (F2L)");
+        currentStep = 3;
+        intStateButton1.setText("Right Algorithm");
+        intStateButton1.setVisible(true);
 
-        stepNameLabel.setText("");
+        intStateButton2.setText("Left Algorithm");
+        intStateButton2.setVisible(true);
+
+        intStateButton3.setText("Wrong Orientation");
+        intStateButton3.setVisible(true);
+
+
+
 
     }
 
@@ -166,6 +177,35 @@ public class Tutorial {
 
             tutorialCubeState[5][0][2]=1;
             tutorialCubeState[5][1][1]=1;
+
+        }
+        else if(currentStep ==3){
+
+            tutorialCubeState[2][0][0] = 2;
+            tutorialCubeState[2][0][1] = 2;
+            tutorialCubeState[2][0][2] = 2;
+            tutorialCubeState[2][1][1] = 2;
+
+            tutorialCubeState[3][0][0] = 3;
+            tutorialCubeState[3][0][1] = 3;
+            tutorialCubeState[3][0][2] = 3;
+            tutorialCubeState[3][1][1] = 3;
+            tutorialCubeState[3][2][1] = 3;
+
+            tutorialCubeState[4][0][0]=4;
+            tutorialCubeState[4][0][1]=4;
+            tutorialCubeState[4][0][2]=4;
+            tutorialCubeState[4][1][0]=4;
+            tutorialCubeState[4][1][1]=4;
+            tutorialCubeState[4][1][2]=4;
+            tutorialCubeState[4][2][0]=4;
+            tutorialCubeState[4][2][1]=4;
+            tutorialCubeState[4][2][2]=4;
+
+            tutorialCubeState[5][1][1] = 5;
+            tutorialCubeState[5][1][0] = 2;
+
+
 
         }
 
@@ -401,6 +441,7 @@ public class Tutorial {
         stage.setTitle(stepNameLabel.getText());
         stage.setScene(scene);
         stage.show();
+
 
     }
 }
