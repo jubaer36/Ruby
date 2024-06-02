@@ -138,13 +138,14 @@ public class TutorialMakeCube {
 
         colorCube();
         pressColorChange();
+        colorChangeButton.setVisible(false);
 
     }
 
     private void handleButtonClick(int rowIndex, int colIndex,int sideIndex, Button button){
 
-        buttonStates[sideIndex][rowIndex][colIndex] = currentColor;
-        colorCube();
+//        buttonStates[sideIndex][rowIndex][colIndex] = currentColor;
+//        colorCube();
 
     }
 
