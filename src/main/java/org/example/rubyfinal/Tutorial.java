@@ -4,14 +4,19 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -26,22 +31,24 @@ public class Tutorial {
     @FXML
     private Label descTutorialTextLabel;
     @FXML
-    private ImageView tutorialImageView1;
+    private ImageView tutorialImageView1 = new ImageView();
 
     @FXML
-    private ImageView tutorialImageView2;
+    private ImageView tutorialImageView2 = new ImageView();
 
     @FXML
     private AnchorPane holderAnchorPane;
+    Image image1,image2;
 
-    private String descTutorial , imageFilePath;
+    private String descTutorial , imageFilePath1 ,imageFilePath2;
     public static int[][][] tutorialCubeState = new int[6][3][3];
     @FXML
     void initialize(){
         setAllIntStepsButtonInvisible();
         stepNameLabel.setText("");
         resetCubeState();
-        imageFilePath = "/images/Step1Int1.png";
+        imageFilePath1 = "/images/Step1Int0.png";
+        imageFilePath2 = "/images/Step1Int0Solved.png";
 
 
 
@@ -56,8 +63,8 @@ public class Tutorial {
         intStateButton6.setVisible(false);
         descTutorialTextLabel.setVisible(false);
         intermediateTextLabel.setVisible(false);
-        tutorialImageView1.setVisible(false);
-        tutorialImageView2.setVisible(false);
+        tutorialImageView1.setVisible(true);
+        tutorialImageView2.setVisible(true);
 
         tryButton.setVisible(false);
 
@@ -77,9 +84,11 @@ public class Tutorial {
 
 
     public void onStep1ButtonClicked(ActionEvent event) {
+        currentStep = 1;
+        loadImage();
         setAllIntStepsButtonInvisible();
         stepNameLabel.setText("Step: White Cross");
-        currentStep = 1;
+
         readFile();
         descTutorialTextLabel.setText(descTutorial);
         descTutorialTextLabel.setVisible(true);
@@ -106,6 +115,7 @@ public class Tutorial {
     public void onStep2ButtonClicked(ActionEvent event) {
         setAllIntStepsButtonInvisible();
         currentStep = 2;
+        loadImage();
         readFile();
         descTutorialTextLabel.setText(descTutorial);
         descTutorialTextLabel.setVisible(true);
@@ -129,6 +139,7 @@ public class Tutorial {
         setAllIntStepsButtonInvisible();
         currentStep = 3;
         readFile();
+        loadImage();
         descTutorialTextLabel.setText(descTutorial);
         descTutorialTextLabel.setVisible(true);
         stepNameLabel.setText("Second Layer (F2L)");
@@ -150,6 +161,7 @@ public class Tutorial {
         setAllIntStepsButtonInvisible();
         currentStep = 4;
         readFile();
+        loadImage();
         descTutorialTextLabel.setText(descTutorial);
         descTutorialTextLabel.setVisible(true);
         stepNameLabel.setText("Yellow Cross");
@@ -164,6 +176,7 @@ public class Tutorial {
         setAllIntStepsButtonInvisible();
         currentStep = 5;
         readFile();
+        loadImage();
         descTutorialTextLabel.setText(descTutorial);
         descTutorialTextLabel.setVisible(true);
         stepNameLabel.setText("Yellow Edge");
@@ -176,6 +189,7 @@ public class Tutorial {
         setAllIntStepsButtonInvisible();
         currentStep = 6;
         readFile();
+        loadImage();
         descTutorialTextLabel.setText(descTutorial);
         descTutorialTextLabel.setVisible(true);
         stepNameLabel.setText("Yellow Corner");
@@ -187,6 +201,7 @@ public class Tutorial {
         setAllIntStepsButtonInvisible();
         currentStep = 7;
         readFile();
+        loadImage();
         descTutorialTextLabel.setText(descTutorial);
         descTutorialTextLabel.setVisible(true);
         stepNameLabel.setText("Last Layer");
@@ -204,12 +219,13 @@ public class Tutorial {
     public void onIntStateButton1Clicked(ActionEvent event) throws IOException {
         currentIntermediateStep = 1;
         readFile();
+        loadImage();
         descTutorialTextLabel.setText(descTutorial);
         descTutorialTextLabel.setVisible(true);
         resetCubeState();
         tryButton.setVisible(true);
         if(currentStep == 1){
-            descTutorial = "The most complicated case is when three edges are done and the last one is oriented wrong. This is the fastest way to flip an edge: F takes the edge to the equator, U' moves the empty spot in place, R moves the edge up in the top again, now well-oriented, U restores the position.";
+
 
             tutorialCubeState[0][0][1]=4;
             tutorialCubeState[0][1][1]= 0;
@@ -492,6 +508,7 @@ public class Tutorial {
     public void onIntStateButton2Clicked(ActionEvent event) {
         currentIntermediateStep = 2;
         readFile();
+        loadImage();
         descTutorialTextLabel.setText(descTutorial);
         descTutorialTextLabel.setVisible(true);
         resetCubeState();
@@ -664,6 +681,7 @@ public class Tutorial {
     public void onIntStateButton3Clicked(ActionEvent event) {
         currentIntermediateStep = 3;
         readFile();
+        loadImage();
         descTutorialTextLabel.setText(descTutorial);
         descTutorialTextLabel.setVisible(true);
         resetCubeState();
@@ -826,6 +844,7 @@ public class Tutorial {
     public void onIntStateButton4Clicked(ActionEvent event) {
         currentIntermediateStep = 4;
         readFile();
+        loadImage();
         descTutorialTextLabel.setText(descTutorial);
         descTutorialTextLabel.setVisible(true);
         resetCubeState();
@@ -957,6 +976,7 @@ public class Tutorial {
     public void onIntStateButton5Clicked(ActionEvent event) {
         currentIntermediateStep = 5;
         readFile();
+        loadImage();
         descTutorialTextLabel.setText(descTutorial);
         descTutorialTextLabel.setVisible(true);
         resetCubeState();
@@ -1004,16 +1024,51 @@ public class Tutorial {
 
     }
     public void readFile(){
-        Path filePath = Paths.get("/mnt/Work/Projects/Ruby-Final/src/main/java/org/example/rubyfinal/resources/step"+currentStep+"Int"+currentIntermediateStep+".txt");
+        Path filePath = Paths.get("/mnt/Work/Projects/Ruby-Final/src/main/resources/text/step"+currentStep+"Int"+currentIntermediateStep+".txt");
         try {
             descTutorial = Files.readString(filePath);
-            System.out.println(descTutorial);
+//            System.out.println(descTutorial);
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Can't read file");
         }
 
     }
-    public void loadImage(){}
+    public void loadImage() {
+        try {
+            // Use the class loader to get the resource as a stream
+//            System.out.println(currentStep + " "+ currentIntermediateStep);
+            imageFilePath1 = "/images/Step"+currentStep+"Int"+currentIntermediateStep+".png";
+            imageFilePath2 = "/images/Step"+currentStep+"Int"+currentIntermediateStep+"Solved.png";
+            InputStream inputStream1 = getClass().getResourceAsStream(imageFilePath1);
+            InputStream inputStream2 = getClass().getResourceAsStream(imageFilePath2);
+
+            // Ensure that the images are found
+            if (inputStream1 == null || inputStream2 == null) {
+                throw new FileNotFoundException("Image file not found");
+            }
+
+            // Load the images using the InputStream
+            image1 = new Image(inputStream1);
+            image2 = new Image(inputStream2);
+
+            // Set the images to the ImageViews
+            tutorialImageView1.setImage(image1);
+            tutorialImageView2.setImage(image2);
+
+
+        } catch (Exception e) {
+            showErrorDialog("Error loading images", "Could not load images: " + e.getMessage());
+        }
+    }
+
+    private void showErrorDialog(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
 
 }

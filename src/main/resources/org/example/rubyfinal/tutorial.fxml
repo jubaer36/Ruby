@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
@@ -28,16 +27,8 @@
             <AnchorPane fx:id="holderAnchorPane" layoutX="144.0" layoutY="57.0" prefHeight="716.0" prefWidth="840.0">
                <children>
                   <Label fx:id="intermediateTextLabel" layoutX="402.0" layoutY="26.0" text="Label" />
-                  <ImageView fx:id="tutorialImageView1" fitHeight="310.0" fitWidth="391.0" layoutX="14.0" layoutY="324.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../images/Step1Int1.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="tutorialImageView2" fitHeight="310.0" fitWidth="391.0" layoutX="427.0" layoutY="324.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../images/Step1Int1Solved.png" />
-                     </image>
-                  </ImageView>
+                  <ImageView fx:id="tutorialImageView1" fitHeight="310.0" fitWidth="391.0" layoutX="14.0" layoutY="324.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="tutorialImageView2" fitHeight="310.0" fitWidth="391.0" layoutX="427.0" layoutY="324.0" pickOnBounds="true" preserveRatio="true" />
                   <Label layoutX="134.0" layoutY="300.0" text="INITIAL" />
                   <Label layoutX="604.0" layoutY="300.0" text="FINAL" />
                   <Label fx:id="descTutorialTextLabel" alignment="TOP_LEFT" layoutX="48.0" layoutY="56.0" prefHeight="236.0" prefWidth="773.0" text="sdfsd" wrapText="true" />
