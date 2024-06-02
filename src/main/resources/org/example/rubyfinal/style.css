@@ -1,29 +1,30 @@
 #LeftSidePane {
-    -fx-background-color: #373A40;
+    -fx-background-color: #1F2833;
 }
 
 #tutorialButton, #manualButton, #solverButton {
-    -fx-background-color: #3572EF;
-    -fx-text-fill: white;  /* White text color for contrast */
+    -fx-background-color: #0B0C10;
+    -fx-text-fill: #C5C6C7;  /* White text color for contrast */
     -fx-font-size: 14px;
     -fx-font-weight: bold;
     -fx-padding: 3px 15px;
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
     -fx-pref-width: 120px; /* Fixed width for all buttons */
+    -fx-border-color: #66FCF1;
 }
 
 #tutorialButton:hover, #manualButton:hover, #solverButton:hover {
-    -fx-background-color: darkblue;
+    -fx-background-color: #45A29E;
 }
 
 #ProjectName{
     #applicationNameLabel {
-        -fx-text-fill: White;  /* White text color */
+        -fx-text-color: #66FC1;  /* White text color */
         -fx-font-size: 30px;  /* Font size for visibility */
         -fx-font-weight: bold;  /* Bold font weight for emphasis */
         -fx-padding: 10px;  /* Padding around the text */
-        -fx-background-color:#373A40;
+        -fx-background-color:#1F2833;
         /* Center the text */
     }
 }
