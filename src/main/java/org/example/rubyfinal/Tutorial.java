@@ -1013,7 +1013,7 @@ public class Tutorial {
             System.out.println("Can't read file");
         }
 
-
     }
+    public void loadImage(){}
 
 }
