@@ -1,0 +1,2 @@
+In case of the L Shape you will do this move
+F R U R' U' F' x2 F R U R' U' F'

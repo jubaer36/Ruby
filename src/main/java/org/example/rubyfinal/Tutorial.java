@@ -7,44 +7,57 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class Tutorial {
 
-    private int currentStep;
+    private int currentStep , currentIntermediateStep = 0;
     @FXML
     private Button step1Button , step2Button , step3Button, step4Button , step5Button , step6Button ,step7Button , intStateButton1,intStateButton2,intStateButton5,intStateButton3,intStateButton4,intStateButton6 , tryButton;
     @FXML
     private Label stepNameLabel , intermediateTextLabel;
     @FXML
-    private TextArea descTutorialTextArea;
+    private Label descTutorialTextLabel;
+    @FXML
+    private ImageView tutorialImageView1;
+
+    @FXML
+    private ImageView tutorialImageView2;
 
     @FXML
     private AnchorPane holderAnchorPane;
 
-    private String descTutorial;
+    private String descTutorial , imageFilePath;
     public static int[][][] tutorialCubeState = new int[6][3][3];
     @FXML
     void initialize(){
         setAllIntStepsButtonInvisible();
         stepNameLabel.setText("");
         resetCubeState();
+        imageFilePath = "/images/Step1Int1.png";
 
 
 
     }
     public void setAllIntStepsButtonInvisible(){
+        currentIntermediateStep = 0;
         intStateButton1.setVisible(false);
         intStateButton2.setVisible(false);
         intStateButton3.setVisible(false);
         intStateButton4.setVisible(false);
         intStateButton5.setVisible(false);
         intStateButton6.setVisible(false);
-        descTutorialTextArea.setVisible(false);
+        descTutorialTextLabel.setVisible(false);
         intermediateTextLabel.setVisible(false);
+        tutorialImageView1.setVisible(false);
+        tutorialImageView2.setVisible(false);
 
         tryButton.setVisible(false);
 
@@ -65,8 +78,11 @@ public class Tutorial {
 
     public void onStep1ButtonClicked(ActionEvent event) {
         setAllIntStepsButtonInvisible();
-        currentStep = 1;
         stepNameLabel.setText("Step: White Cross");
+        currentStep = 1;
+        readFile();
+        descTutorialTextLabel.setText(descTutorial);
+        descTutorialTextLabel.setVisible(true);
 
 
         intStateButton1.setText("Flip an Edge");
@@ -84,12 +100,16 @@ public class Tutorial {
         intStateButton5.setText("From the Middle - 3");
         intStateButton5.setVisible(true);
 
+
     }
 
     public void onStep2ButtonClicked(ActionEvent event) {
         setAllIntStepsButtonInvisible();
-        stepNameLabel.setText("White Corner");
         currentStep = 2;
+        readFile();
+        descTutorialTextLabel.setText(descTutorial);
+        descTutorialTextLabel.setVisible(true);
+        stepNameLabel.setText("White Corner");
         intStateButton1.setText("White sticker to the right");
         intStateButton1.setVisible(true);
 
@@ -107,8 +127,11 @@ public class Tutorial {
 
     public void onStep3ButtonClicked(ActionEvent event) {
         setAllIntStepsButtonInvisible();
-        stepNameLabel.setText("Second Layer (F2L)");
         currentStep = 3;
+        readFile();
+        descTutorialTextLabel.setText(descTutorial);
+        descTutorialTextLabel.setVisible(true);
+        stepNameLabel.setText("Second Layer (F2L)");
         intStateButton1.setText("Right Algorithm");
         intStateButton1.setVisible(true);
 
@@ -126,6 +149,9 @@ public class Tutorial {
     public void onStep4ButtonClicked(ActionEvent event) {
         setAllIntStepsButtonInvisible();
         currentStep = 4;
+        readFile();
+        descTutorialTextLabel.setText(descTutorial);
+        descTutorialTextLabel.setVisible(true);
         stepNameLabel.setText("Yellow Cross");
         intStateButton1.setText("One Dot");
         intStateButton1.setVisible(true);
@@ -137,6 +163,9 @@ public class Tutorial {
     public void onStep5ButtonClicked(ActionEvent event) {
         setAllIntStepsButtonInvisible();
         currentStep = 5;
+        readFile();
+        descTutorialTextLabel.setText(descTutorial);
+        descTutorialTextLabel.setVisible(true);
         stepNameLabel.setText("Yellow Edge");
         intStateButton1.setText("Switch Edges");
         intStateButton1.setVisible(true);
@@ -146,6 +175,9 @@ public class Tutorial {
     public void onStep6ButtonClicked(ActionEvent event) {
         setAllIntStepsButtonInvisible();
         currentStep = 6;
+        readFile();
+        descTutorialTextLabel.setText(descTutorial);
+        descTutorialTextLabel.setVisible(true);
         stepNameLabel.setText("Yellow Corner");
         intStateButton1.setText("Position Corners");
         intStateButton1.setVisible(true);
@@ -154,6 +186,9 @@ public class Tutorial {
     public void onStep7ButtonClicked(ActionEvent event) {
         setAllIntStepsButtonInvisible();
         currentStep = 7;
+        readFile();
+        descTutorialTextLabel.setText(descTutorial);
+        descTutorialTextLabel.setVisible(true);
         stepNameLabel.setText("Last Layer");
         intStateButton1.setText("Next To Each Other");
         intStateButton1.setVisible(true);
@@ -167,6 +202,10 @@ public class Tutorial {
 
 
     public void onIntStateButton1Clicked(ActionEvent event) throws IOException {
+        currentIntermediateStep = 1;
+        readFile();
+        descTutorialTextLabel.setText(descTutorial);
+        descTutorialTextLabel.setVisible(true);
         resetCubeState();
         tryButton.setVisible(true);
         if(currentStep == 1){
@@ -451,6 +490,10 @@ public class Tutorial {
 
     }
     public void onIntStateButton2Clicked(ActionEvent event) {
+        currentIntermediateStep = 2;
+        readFile();
+        descTutorialTextLabel.setText(descTutorial);
+        descTutorialTextLabel.setVisible(true);
         resetCubeState();
         tryButton.setVisible(true);
         if(currentStep ==1){
@@ -619,7 +662,12 @@ public class Tutorial {
     }
 
     public void onIntStateButton3Clicked(ActionEvent event) {
+        currentIntermediateStep = 3;
+        readFile();
+        descTutorialTextLabel.setText(descTutorial);
+        descTutorialTextLabel.setVisible(true);
         resetCubeState();
+
         tryButton.setVisible(true);
         if(currentStep==1){
             tutorialCubeState[0][1][1]= 0;
@@ -776,6 +824,10 @@ public class Tutorial {
         }
     }
     public void onIntStateButton4Clicked(ActionEvent event) {
+        currentIntermediateStep = 4;
+        readFile();
+        descTutorialTextLabel.setText(descTutorial);
+        descTutorialTextLabel.setVisible(true);
         resetCubeState();
         tryButton.setVisible(true);
         if(currentStep==1){
@@ -903,6 +955,10 @@ public class Tutorial {
 
     }
     public void onIntStateButton5Clicked(ActionEvent event) {
+        currentIntermediateStep = 5;
+        readFile();
+        descTutorialTextLabel.setText(descTutorial);
+        descTutorialTextLabel.setVisible(true);
         resetCubeState();
         tryButton.setVisible(true);
         if(currentStep==1){
@@ -933,6 +989,7 @@ public class Tutorial {
     }
 
     public void onIntStateButton6Clicked(ActionEvent event) {
+        currentIntermediateStep = 6;
     }
 
 
@@ -946,4 +1003,17 @@ public class Tutorial {
 
 
     }
+    public void readFile(){
+        Path filePath = Paths.get("/mnt/Work/Projects/Ruby-Final/src/main/java/org/example/rubyfinal/resources/step"+currentStep+"Int"+currentIntermediateStep+".txt");
+        try {
+            descTutorial = Files.readString(filePath);
+            System.out.println(descTutorial);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Can't read file");
+        }
+
+
+    }
+
 }

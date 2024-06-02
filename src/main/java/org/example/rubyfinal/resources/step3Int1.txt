@@ -1,0 +1,2 @@
+You'll have to learn two algorithms which bring the edge piece from the yellow layer to the second layer without messing up the white face already solved. Until this point we held the cube with the white center facing up, now turn it upside down to let you review the puzzle better.
+Here we will first go through the Right Algorithm

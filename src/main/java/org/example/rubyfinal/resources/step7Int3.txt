@@ -1,0 +1,4 @@
+Two corners on opposite sides.
+U (R' D' R D)x2 U2 (R' D' R D)x4 U
+
+

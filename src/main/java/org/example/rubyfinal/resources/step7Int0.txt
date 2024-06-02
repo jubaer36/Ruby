@@ -1,0 +1,2 @@
+All pieces are on their right places you just have to orient the yellow corners to finish the puzzle. This proved to be the most confusing step so read the instructions and follow the steps carefully.
+Hold the cube in your hand with an unsolved corner on the front-right-top corner, then do the algorithm below twice or four times until that specific piece is oriented well.

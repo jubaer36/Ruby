@@ -1,0 +1,3 @@
+After making the yellow cross on the top of the cube you have to put the yellow edge pieces on their final places to match the colors of the side center pieces. Switch the front and left yellow edges with the following algorithm:
+RUR'URU2R'U
+You might face a situation when you have to apply this algorithm more than once.

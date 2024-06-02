@@ -1,0 +1,3 @@
+In case of the dot you'll have to do the algorithm three times.
+Orientation of the Cube is important
+F R U R' U' F' x2 F R U R' U' F' x2 F R U R' U' F'

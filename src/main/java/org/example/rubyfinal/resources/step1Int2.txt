@@ -1,0 +1,3 @@
+Another tricky situation is when the last white edge is on the front face but you can't just simply move it to the top because it would end up facing in the wrong direction. We can use the previous trick starting with a double front turn:
+
+F2 followed by (F U' R U), which gives F' U' R U because three quater turns of a face in one direction is in fact a reverse rotation.

@@ -1,0 +1,2 @@
+It requires a total of 12 iterations when all yellow corners are twisted.
+(R' D' R D)x4  U  (R' D' R D)x4  U  (R' D' R D)x2  U  (R' D' R D)x2 U

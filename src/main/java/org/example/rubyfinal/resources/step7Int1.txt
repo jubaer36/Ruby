@@ -1,0 +1,2 @@
+Two wrong pieces next to each other: do R' D' R D twice for one corner and four times for the other.
+(R' D' R D)x2 U' (R' D' R D)x4  U

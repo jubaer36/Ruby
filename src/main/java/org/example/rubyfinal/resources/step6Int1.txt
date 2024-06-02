@@ -1,0 +1,8 @@
+We have almost finished solving the Rubik's Cube, only the yellow corners are left. In this step we just have to put them in the right spot, it doesn't matter if the orientation is wrong. We're going to take care about the orientation in the last step.
+
+Use the moves below which cycles around three corners in the upper layer counterclockwise swapping the pieces marked on the image:
+
+Look for a yellow corner which is on the right position, then hold the cube in your hands with this one in the front-right-top and execute the algorithm below. If the pieces didn't get where they belong do the algorithm one more time.
+URU'L'UR'U'L
+
+Sometimes you can't find a piece in the correct spot. In this case utilize the same algorithm for any random corner to bring one to the correct position.

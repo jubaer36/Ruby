@@ -1,0 +1,2 @@
+When the white corner piece is in the white layer just in a wrong spot you first need to take it out to the bottom layer and do one of the previous moves. An example:
+

@@ -1,0 +1,6 @@
+White sticker at the bottom of the cube.
+
+Two approaches
+R' D2' R D R' D' R
+
+or R2 D' R2 D R2

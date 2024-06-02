@@ -1,0 +1,7 @@
+Start solving the last layer making a yellow cross on the top of the cube. It doesn't matter if the pieces are not on their final places so we don't have to pay attention to the colors of the sides.
+
+We can get three possible patterns on the top. Use this algorithm to go from one state to the other:
+Those three patterns are
+ A dot
+ L Shape
+ Horizontal Line

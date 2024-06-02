@@ -1,0 +1,2 @@
+When the edge piece is on the right spot but oriented wrong or it's not in the upper layer you'll have fix it in two steps, first it needs to be taken to the top of the cube. In the example below we use the Right algorithm twice.
+Or vice versa

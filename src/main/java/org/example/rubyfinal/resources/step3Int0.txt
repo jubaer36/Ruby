@@ -1,0 +1,4 @@
+Until this point the procedure was pretty straight forward but from now on we have to use algorithms. We can forget the completed white face so let's turn the cube upside down to focus on the unsolved side.
+
+In this step we are completing the first two layers (F2L). There are two symmetric algorithms we have to use in this step. They're called the Right and Left algorithms. These algorithms insert the Up-Front edge piece from the top layer to the middle layer while not messing up the solved white face.
+If none of the pieces in the top layer are already lined up like in the images below, then turn the top layer until one of the edge pieces in the top layer matches one of the images below. Then follow the matching algorithm for that orientation.

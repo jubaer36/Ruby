@@ -1,0 +1,7 @@
+In this stage of the Rubik's Cube solution we have have to fix the yellow edges by repositioning these cubelets.
+
+The algorithm switches the front-top and the left-top edges as marked on the image:
+
+When you get to this stage the first thing you have to do is to rotate around the top layer trying to find two edges which have to be switched. Sometimes it can occur that you can't find two pieces to swap next to each other, because you would have to swap two which are facing each other. In this case you'll have to execute the permutation twice, as shown on the second animation.
+Switch two edges in the last layer
+R U R' U R U2 R' U

@@ -1,0 +1,5 @@
+Only the last layer corners are left unsolved. First we have to get them to the right spot, so don't worry about the orientation in this step.
+
+Find a piece which is already on the right place, move it to the right-front-top corner then apply the following0 algorithm to switch (cycle) the three wrong pieces marked on the image.
+URU'L'UR'U'L
+Do this twice to do an inverse rotation of the pieces. If none of the yellow corners is on the right place then execute the algorithm once to get a good piece.

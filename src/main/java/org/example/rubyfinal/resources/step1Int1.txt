@@ -1,0 +1,1 @@
+The most complicated case is when three edges are done and the last one is oriented wrong. This is the fastest way to flip an edge: F takes the edge to the equator, U' moves the empty spot in place, R moves the edge up in the top again, now well-oriented, U restores the position.

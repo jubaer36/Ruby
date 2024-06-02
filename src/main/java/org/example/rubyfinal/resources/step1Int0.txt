@@ -1,0 +1,7 @@
+The easiest step is solving the first layer edges of the Rubik's Cube. Choose one color you want to start with. In this beginner's tutorial we're going to start with the white face.
+
+I suggest you try to solve the first face without reading these instructions, so you can feel the sense of accomplishment when you complete it all alone. This step is not so hard because you don't have to take care of so many solved cubelets yet.
+
+You can determine where a piece comes according to the colour of the center pieces which never swap places. Every edge must fit to the side center piece too. See the attached image.
+
+The idea is to put the first edge to the right spot, oriented correctly, then the second piece so you don't mess up the one you have already solved. When you solve the fourth you have to take care not to mess up the three solved pieces so it gets harder step by step.

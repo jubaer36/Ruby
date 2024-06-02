@@ -1,0 +1,2 @@
+For three corners: The algorithm has to be applied twice for each corner.
+(R' D' R D)x2  U  (R' D' R D)x2 U2 (R' D' R D)x2 U
