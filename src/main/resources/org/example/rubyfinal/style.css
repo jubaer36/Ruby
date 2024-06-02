@@ -25,12 +25,13 @@
         -fx-font-weight: bold;  /* Bold font weight for emphasis */
         -fx-padding: 10px;  /* Padding around the text */
         -fx-background-color:#1F2833;
+
         /* Center the text */
     }
 }
 
 #imagePane {
-    -fx-background-image: url("file:/D:/Project-Ruby-Final/src/main/Designer.jpeg");
+    -fx-background-image: url("file:src/main/Designer.jpeg");
     -fx-background-repeat: no-repeat;
     -fx-background-size: 400px 400px;
 }

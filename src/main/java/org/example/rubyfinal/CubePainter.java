@@ -152,6 +152,9 @@ public class CubePainter extends JPanel implements ActionListener, ChangeListene
         stop.setLocation(140, 10); stop.setSize(80,20);
         stop.setFont(customFont);
         add(stop);
+        stop.setBackground(new Color(11,12,16));
+        stop.setBorder(new LineBorder(new Color(102,252,241)));
+        stop.setForeground(new Color(197,198,199));
         stop.addActionListener(this);
 
         scrambleText = new JLabel("Scramble");
@@ -174,6 +177,9 @@ public class CubePainter extends JPanel implements ActionListener, ChangeListene
         skip.setFont(customFont);
         skip.setSize(60,20);
         skip.addActionListener(this);
+        skip.setBackground(new Color(11,12,16));
+        skip.setBorder(new LineBorder(new Color(102,252,241)));
+        skip.setForeground(new Color(197,198,199));
         add(skip);
 
         rewind = new JButton("<--");
@@ -181,6 +187,9 @@ public class CubePainter extends JPanel implements ActionListener, ChangeListene
         rewind.setLocation(240, 8);
         rewind.setSize(60,20);
         rewind.addActionListener(this);
+        rewind.setBackground(new Color(11,12,16));
+        rewind.setBorder(new LineBorder(new Color(102,252,241)));
+        rewind.setForeground(new Color(197,198,199));
         add(rewind);
 
         animSpeed = new JSlider(1, 10); animSpeed.setValue(1); //Slider values range from 1 to 10
@@ -195,7 +204,7 @@ public class CubePainter extends JPanel implements ActionListener, ChangeListene
 
         inputScramble = new JTextField(scramble);
 
-        inputScramble.setLocation(150, 40); inputScramble.setSize(390, 40);
+        inputScramble.setLocation(150, 40); inputScramble.setSize(410, 40);
         inputScramble.setFocusable(true);
         inputScramble.setBackground(new Color(	11	,12,	16));
         inputScramble.setBorder(BorderFactory.createLineBorder(new Color(	197	,198	,199)));
@@ -208,11 +217,17 @@ public class CubePainter extends JPanel implements ActionListener, ChangeListene
         applyScramble.setFont(customFont);
         applyScramble.setLocation(580, 40); applyScramble.setSize(120,20);
         add(applyScramble);
+        applyScramble.setBackground(new Color(11,12,16));
+        applyScramble.setBorder(new LineBorder(new Color(102,252,241)));
+        applyScramble.setForeground(new Color(197,198,199));
         applyScramble.addActionListener(this);
 
         randomize = new JButton("RANDOM");
         randomize.setFont(customFont);
         randomize.setLocation(580, 70); randomize.setSize(120,20);
+        randomize.setBackground(new Color(11,12,16));
+        randomize.setBorder(new LineBorder(new Color(102,252,241)));
+        randomize.setForeground(new Color(197,198,199));
         add(randomize);
         randomize.addActionListener(this);
 

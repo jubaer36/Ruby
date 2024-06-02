@@ -38,8 +38,10 @@ public class CubeDisplayer extends JFrame implements ActionListener{
         menuBar = new JMenuBar();
         menuBar.setBackground(new Color(31,	40	,51));
         modes = new JMenu("Mode Selection");
+        modes.setForeground(new Color(31,	40	,51));
         colorSelection = new JMenuItem("Color Selection Mode");
         scramble = new JMenuItem("Text Scramble Mode");
+
         modes.add(colorSelection);
         modes.add(scramble);
         colorSelection.addActionListener(this);
