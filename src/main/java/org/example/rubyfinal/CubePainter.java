@@ -26,63 +26,41 @@ import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
 import javax.swing.Timer;
+import javax.swing.border.LineBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-/**
- * Copyright 2017, Shoumyo Chakravorti, All rights reserved.
- * <p>
- * Licensed under the MIT License.
- * <p>
- * The CubePainter class defines and takes input from all components which the user can interact with.
- * The CubePainter class has two unique solution modes: "Text Scramble" and "Color Selection".
- *
- * @author Shoumyo Chakravorti
- * @version 2.0
- */
-public class CubePainter extends JPanel implements ActionListener, ChangeListener, MouseListener {
-    //Auto-generated ID
-    private static final long serialVersionUID = -8879300942801280752L;
 
-    //Buttons to start and stop animation; to reset the scramble based on text field
+public class CubePainter extends JPanel implements ActionListener, ChangeListener, MouseListener {
+
+//    All the variables , buttons and Jpanel Stuffs
     private JButton start, stop, applyScramble, randomize;
     private JButton skip, rewind;
-    //Buttons used during the color input phase to either reset the colors or proceed with the inputed colors
-    //to the solution
     private JButton resetCubeInputs, setInputs;
-    //Slider to control animation speed
     private JSlider animSpeed;
-    //Allows User to choose which side's colors to enter during color input mode
+    private JLabel scrambleText;
     private JComboBox<String> sideChoser;
-    private String[] instructions; //Colors for instructions to display during color input mode
-    //Text field to allow user to input a custom scramble different from the default scramble
-    private JTextField inputScramble;
-    //Timer to control delay between animation of moves
+    private String[] instructions;
+    private JTextField inputScramble ;
+
+
     private Timer frameTimer;
     //Stroke for bold outline along edges of cubie colors
-    final static BasicStroke s = new BasicStroke(5.0f, BasicStroke.CAP_BUTT,
+    final static BasicStroke s = new BasicStroke(3.0f, BasicStroke.CAP_BUTT,
             BasicStroke.JOIN_MITER, 10.0f);
-    private final static Font font = new Font("Monospace", Font.BOLD, 35);
-    //Standard frame rate delay
+    private final static Font font = new Font("Roboto", Font.BOLD, 30);
     public final static int DELAY = 1500;
     final static int CUBIE_SIZE = 50;
 
-    //Allows for toggling between modes when updateMode() is invoked
+
     private String mode = new String();
     public final static String TEXT_SCRAMBLE = "Text Scramble";
     public final static String COLOR_SELECTION = "Color Selection";
     private char colorSelected; //The color selected while in color input mode
     private char sideChosen; //The side for which the user is entering colors
-    /*
-     * colorsInputed[0] = left colors
-     * colorsInputed[1] = up colors
-     * colorsInputed[2] = front colors
-     * colorsInputed[3] = back colors
-     * colorsInputed[4] = right colors
-     * colorsInputed[5] = down colors
-     */
+
     private char[][][] colorsInputed; //Holds all inputed colors
-    //Whether a solution is currently being displayed
+//    If in solution mode
     private boolean inSolution;
 
     private Cube cube = new Cube();
@@ -95,7 +73,7 @@ public class CubePainter extends JPanel implements ActionListener, ChangeListene
     private String movesToPerform = new String(), movesPerformed = new String();
 
     /*
-     * Respective stages of the solution w.r.t the phase variable
+     * Respective Phase Variables
      * 0 = sunflower
      * 1 = whiteCross
      * 2 = whiteCorners
@@ -110,13 +88,11 @@ public class CubePainter extends JPanel implements ActionListener, ChangeListene
     //Helps keep track of moves to perform, and allows for painting of moves
     private int movesIndex = 0;
 
-    /**
-     * Initializes all elements of the CubePainter JPanel with which the user can interact.
-     * This includes all buttons, sliders, and text fields.
-     */
+//  Initialization
     public CubePainter() {
-        setLayout(null); //Allows for manually setting locations of components
+        setLayout(null);
         setSize(getPreferredSize());
+        setBackground(new Color(31,	40	,51));
         setIgnoreRepaint(true);
         setVisible(true);
         mode = TEXT_SCRAMBLE;
@@ -129,7 +105,6 @@ public class CubePainter extends JPanel implements ActionListener, ChangeListene
         resetCubeInputs();
         addMouseListener(this);
 
-        //Initialize all buttons, sliders and text fields
         initializeComponents();
         resetScramble(inputScramble.getText());
         //Initialize the frame timer
@@ -145,12 +120,10 @@ public class CubePainter extends JPanel implements ActionListener, ChangeListene
         });
         start.doClick();
         animSpeed.setValue(10);
-        frameTimer.setDelay(DELAY/animSpeed.getValue());
+        frameTimer.setDelay((DELAY)/animSpeed.getValue());
     }
 
-    /**
-     * Resets the colors inputed in color selection mode to the colors of a cube in its solved state.
-     */
+
     public void resetCubeInputs() {
         for(int i = 0; i<3; i++) {
             Arrays.fill(colorsInputed[0][i], 'R');
@@ -162,52 +135,58 @@ public class CubePainter extends JPanel implements ActionListener, ChangeListene
         }
     }
 
-    /**
-     * Initializes all the buttons, sliders, combo boxes, and text fields for the user to interact with.
-     * Helper methods for constructor.
-     */
+
     public void initializeComponents() {
+        Font customFont = new Font("Arial", Font.BOLD, 14);
         start = new JButton("Start");
         start.setLocation(50, 10); start.setSize(80,20);
+        start.setFont(customFont);
         add(start);
         start.addActionListener(this);
+        start.setBackground(new Color(11,12,16));
+        start.setBorder(new LineBorder(new Color(102,252,241)));
+        start.setForeground(new Color(197,198,199));
+
 
         stop = new JButton("Stop");
-        stop.setLocation(130, 10); stop.setSize(80,20);
+        stop.setLocation(140, 10); stop.setSize(80,20);
+        stop.setFont(customFont);
         add(stop);
         stop.addActionListener(this);
 
-//        ImageIcon icon1 = new ImageIcon(), icon2 = new ImageIcon();
-//        try {
-//            Image img1 = ImageIO.read(getClass().getResource("org/example/rubyfinal/images/Skip.png"));
-//            Image img2 = ImageIO.read(getClass().getResource("images/Skip.png"));
-//            img1 = img1.getScaledInstance(25, 25, Image.SCALE_SMOOTH);
-//            img2 = img2.getScaledInstance(25, 25, Image.SCALE_SMOOTH);
-//            icon1 = new ImageIcon(img1);
-//            icon2 = new ImageIcon(img2);
-//        } catch (Exception ex) {
-//            System.out.println(ex);
-//        }
+        scrambleText = new JLabel("Scramble");
+        scrambleText.setLocation(10,40); scrambleText.setSize(150,30);
+        scrambleText.setFont(new Font("Arial", Font.BOLD, 25));
+        scrambleText.setForeground(new Color(	197,198,199));
+        add(scrambleText);
+        scrambleText.setVisible(false);
+
+
+
+
+
+
+
+
 
         skip = new JButton("-->");
-        skip.setLocation(300, 8);
-        skip.setSize(80,20);
-//        skip.setBackground(this.getBackground());
-//        skip.setBorder(null);
+        skip.setLocation(320, 8);
+        skip.setFont(customFont);
+        skip.setSize(60,20);
         skip.addActionListener(this);
         add(skip);
 
         rewind = new JButton("<--");
-        rewind.setLocation(220, 8);
-        rewind.setSize(80,20);
-//        rewind.setBackground(this.getBackground());
-//        rewind.setBorder(null);
+        rewind.setFont(customFont);
+        rewind.setLocation(240, 8);
+        rewind.setSize(60,20);
         rewind.addActionListener(this);
         add(rewind);
 
         animSpeed = new JSlider(1, 10); animSpeed.setValue(1); //Slider values range from 1 to 10
         animSpeed.setMinorTickSpacing(1); animSpeed.setPaintTicks(true);
         animSpeed.setSnapToTicks(true);
+        animSpeed.setBackground(new Color(31,40,51));
 
 
         animSpeed.setLocation(500, 0); animSpeed.setSize(200, 40);
@@ -215,19 +194,25 @@ public class CubePainter extends JPanel implements ActionListener, ChangeListene
         animSpeed.addChangeListener(this);
 
         inputScramble = new JTextField(scramble);
-        inputScramble.setLocation(170, 40); inputScramble.setSize(400, 40);
+
+        inputScramble.setLocation(150, 40); inputScramble.setSize(390, 40);
         inputScramble.setFocusable(true);
-        inputScramble.setBorder(BorderFactory.createLineBorder(Color.black));
-        inputScramble.setFont(new Font("Monospace", Font.BOLD, 15));
+        inputScramble.setBackground(new Color(	11	,12,	16));
+        inputScramble.setBorder(BorderFactory.createLineBorder(new Color(	197	,198	,199)));
+        inputScramble.setFont(customFont);
+        inputScramble.setForeground(new Color(	102	,252,	241));
+
         add(inputScramble);
 
         applyScramble = new JButton("APPLY");
-        applyScramble.setLocation(590, 40); applyScramble.setSize(100,20);
+        applyScramble.setFont(customFont);
+        applyScramble.setLocation(580, 40); applyScramble.setSize(120,20);
         add(applyScramble);
         applyScramble.addActionListener(this);
 
         randomize = new JButton("RANDOM");
-        randomize.setLocation(590, 70); randomize.setSize(100,20);
+        randomize.setFont(customFont);
+        randomize.setLocation(580, 70); randomize.setSize(120,20);
         add(randomize);
         randomize.addActionListener(this);
 
@@ -238,6 +223,7 @@ public class CubePainter extends JPanel implements ActionListener, ChangeListene
         sideChoser.setVisible(false); sideChoser.setEnabled(false);
 
         resetCubeInputs = new JButton("RESET");
+        resetCubeInputs.setFont(customFont);
         resetCubeInputs.setLocation(200, 650); resetCubeInputs.setSize(100, 30);
         add(resetCubeInputs);
         resetCubeInputs.addActionListener(this);
@@ -254,9 +240,7 @@ public class CubePainter extends JPanel implements ActionListener, ChangeListene
 
     }
 
-    /**
-     * Takes actions performed on the buttons to cause changes in the animations or resetting the cube.
-     */
+//   On pressing Buttons
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == start) {
             frameTimer.start();
@@ -323,43 +307,26 @@ public class CubePainter extends JPanel implements ActionListener, ChangeListene
         }
     }
 
-    /**
-     * Takes a change of input from the slider to adjust the frame rate accordingly.
-     */
+
     public void stateChanged(ChangeEvent e) {
         if(e.getSource() == animSpeed) {
             frameTimer.setDelay(DELAY/animSpeed.getValue());
         }
     }
 
-    /**
-     * Returns the preferred dimensions of the CubePainter as a Dimension object.
-     * @return default dimensions of CubePainter
-     */
+
     public Dimension getPreferredSize(){
         return new Dimension(700,770);
     }
 
-    /**
-     * Paints the JPanel. Upon initialization, paints the buttons, sliders, and text field which
-     * the user can interact with. When repaint() is called, the main changes that will be visible
-     * are changes to the cube, moves to be performed, and moves already performed. For painting the cube, this method
-     * invokes the getColors() method from Cube to retrieve all colors, and after painting those colors,
-     * paints an outline around the cubies.
-     */
-    /**
-     * Paints the JPanel. Upon initialization, paints the buttons, sliders, and text field which
-     * the user can interact with. When repaint() is called, the main changes that will be visible
-     * are changes to the cube, moves to be performed, and moves already performed. For painting the cube, this method
-     * invokes the paintComponent() method from Cube to retrieve all colors, and after painting those colors,
-     * paints an outline around the cubies.
-     */
+//    Paints the Jpanel
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
         if(mode.equals(TEXT_SCRAMBLE)) {
-            g.setFont(new Font("Monospace", Font.BOLD, 25));
-            g.drawString("Scramble: ", 30, 70);
+//            g.setFont(new Font("Arial", Font.BOLD, 25));
+//            g.drawString("Scramble: ", 20, 70);
+            scrambleText.setVisible(true);
         }
 
         if(!inSolution) {
@@ -413,11 +380,13 @@ public class CubePainter extends JPanel implements ActionListener, ChangeListene
 
         else if(inSolution) {
             //Display the phase of a solution
-            g.setFont(new Font("Monospace", Font.BOLD, 25));
-            g.drawString("Phase: " + phaseString, 30, 120);
+            g.setFont(new Font("Arial", Font.BOLD, 25));
+            g.setColor(new Color(	197,198,199));
+            g.drawString("Phase: " + phaseString, 10, 120);
+
 
             g.setFont(font);
-            g.setColor(Color.RED);
+            g.setColor(new Color(69	,162	,158));
             g.drawString(movesPerformed, 50, 700); //Draw the moves that have already been performed
 
             //Draw the moves that are yet to be performed
@@ -439,12 +408,7 @@ public class CubePainter extends JPanel implements ActionListener, ChangeListene
 
     }
 
-    /**
-     * Returns the appropriate Color object based on a cubie's color for appropriate
-     * painting in the paintComponent() method.
-     * @param color: cubie color
-     * @return corresponding Color object
-     */
+//    Returns The Color
     private Color getColor(char color) {
         switch(color) {
             case 'W': return Color.WHITE;
@@ -457,12 +421,7 @@ public class CubePainter extends JPanel implements ActionListener, ChangeListene
         return Color.BLACK;
     }
 
-    /**
-     * Gets the index for colorsInputed[(index here)] that corresponds to the side currently being painted when in color
-     * selection mode. Helper method for paintComponent().
-     * @param side
-     * @return index
-     */
+
     private int getIndexOfSide(char side) {
         switch(side) {
             case('L'): return 0;
@@ -475,12 +434,12 @@ public class CubePainter extends JPanel implements ActionListener, ChangeListene
         return 6;
     }
 
-    /**
-     * Retrieves the colors of the faces to be printed in the instructions in the paintComponent() method.
-     * If String[] colors = getInstructions(), color[0] is the color to hold on top, colors[1] is the color
-     * to hold in the back, and colors[2] is the color to hold in front.
-     * @return
-     */
+
+//      Retrieves the colors of the faces to be printed in the instructions in the paintComponent() method.
+//     If String[] colors = getInstructions(), color[0] is the color to hold on top, colors[1] is the color
+//    to hold in the back, and colors[2] is the color to hold in front.
+//
+
     private String[] getInstructions() {
         String[] colors = new String[3];
         switch(sideChosen) {
@@ -506,11 +465,7 @@ public class CubePainter extends JPanel implements ActionListener, ChangeListene
         return colors;
     }
 
-    /**
-     * Resets the scramble that is to be applied on the cube based on the input.
-     * Determines the moves to be performed to solve the cube as well.
-     * @param s: the scramble to be applied
-     */
+//    Scramble to be applied
     public void resetScramble(String s) {
         scramble = s;
         cube = new Cube();
@@ -528,18 +483,13 @@ public class CubePainter extends JPanel implements ActionListener, ChangeListene
 
         cube = new Cube();
         cube.scramble(scramble);
-        //If the cube is being scrambled newly after initializing is complete and animation has begun,
-        //be sure to reset all reference indexes
+
         movesIndex = 0; phase = 0;
         phaseString = "Sunflower";
         repaint();
     }
 
-    /**
-     * After the user inputs their desired colors in color selection mode, pressing the setInputs button
-     * will invoke this method, acquiring the required moves necessary to solve the cube. The cube is restored back to
-     * the scrambled state after the solution moves are acquired.
-     */
+
     public void resetScrambleByColorInputs() {
         cube.setAllColors(colorsInputed);
         sunflower = cube.makeSunflower();
@@ -675,20 +625,12 @@ public class CubePainter extends JPanel implements ActionListener, ChangeListene
         }
     }
 
-    /**
-     * Sets {@code inSolution} to the parameter, determining whether a solution is to be displayed.
-     * @param inSoln whether mode should be switched to being in a solution or not
-     */
+
     public void setInSolution(boolean inSoln) {
         inSolution = inSoln;
     }
 
-    /**
-     * Updates the current phase of the solution as necessary
-     * Respective stages of the solution w.r.t the phase variable
-     * 0 = sunflower		 	1 = whiteCross		2 = whiteCorners		3 = secondLayer
-     * 4 = yellowCross		5 = OLL				6 = PLL
-     */
+//   Updates the phase stating Sunflower, Whitecross and such
     public void updatePhase() {
         if(movesIndex >= movesToPerform.length()) {
             switch(phase) {
@@ -719,17 +661,14 @@ public class CubePainter extends JPanel implements ActionListener, ChangeListene
         }
     }
 
-    /**
-     * Takes in mouse inputs during color selection mode for selecting and inputting colors
-     */
+
     @Override
     public void mouseClicked(MouseEvent e) {
         mousePressed(e);
     }
 
-    /**
-     * Takes in mouse inputs during color selection mode for selecting and inputting colors
-     */
+//      Takes in mouse inputs during color selection mode for selecting and inputting colors
+
     @Override
     public void mousePressed(MouseEvent e) {
         if(mode.equals(COLOR_SELECTION) && !inSolution) {

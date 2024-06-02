@@ -5,29 +5,19 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.Arrays;
 
-/**
- * Copyright 2017, Shoumyo Chakravorti, All rights reserved.
- * <p>
- * Licensed under the MIT License.
- * <p>
- * The Cube class defines the construction, turning, scrambling, and painting of the cube, as well as
- * generation of a valid solution.
- * <p>
- * @author Shoumyo Chakravorti
- * @version 2.0
- */
+
 public class Cube {
 
     //Stores the state of the cube as an object of 26 cubies
     private Cubie[][][] cubiePos = new Cubie[3][3][3];
 
-    /**
-     * Constructs the Cube object by instantiating a Cubie for each position in three-dimensional space
-     * When the cube is held with Yellow facing up and Green facing front, x increases going from left to right,
-     * y increases going from the front to the back, and z increases going from the top to the bottom.
-     * x, y, and z are zero-indexed.
-     * The core of the cube is not an actual cubie, but is instantiated as one to prevent runtime error
-     */
+
+//     Constructs the Cube object by instantiating a Cubie for each position in three-dimensional space
+//    When the cube is held with Yellow facing up and Green facing front, x increases going from left to right,
+//      y increases going from the front to the back, and z increases going from the top to the bottom.
+//      x, y, and z are zero-indexed.
+//      The core of the cube is not an actual cubie, but is instantiated as one to prevent runtime error
+//
     public Cube() {
         //Up, Front Row
         cubiePos[0][0][0] = new Cubie(0,0,0,
@@ -104,14 +94,9 @@ public class Cube {
 
     }
 
-    /**
-     * Takes a String value of a turn or rotation in standard Rubik's Cube notation and applies the turn or rotation to
-     * the cube. Valid turns currently include any turn in the following planes: U, D, F, B, L, R, M, E, S
-     * Valid rotations are x, y, and z rotations.
-     * @param turn the turn to be performed
-     */
+//   For Rotating the cube based on move name
     public void turn (String turn) {
-        //See the first case (B) to understand how all cases work
+
         char[] preChange; //Directions prior to turning
         char[] postChange; //What the directions change to after the turn
         Cubie[][] matrix = new Cubie[3][3]; //matrix to be rotated
@@ -460,17 +445,7 @@ public class Cube {
 
     }
 
-    /**
-     * Rotates a given 2D matrix as specified by {@code degrees}, where {@code degrees}
-     * can either be 90, indicating a clockwise rotation, or -90, indicating a counterclockwise
-     * rotation. {@code postChange} dictates how the direction of a cubie's colors should
-     * change after the rotation, the original directions being denoted by {@code preChange}.
-     * @param orig the original matrix
-     * @param degrees degrees by which to rotate, can be 90 or -90
-     * @param preChange the set of direction prior to rotation
-     * @param postChange the corresponding set of direction to change the {@code preChange} directions to
-     * @return the rotated matrix
-     */
+
     private Cubie[][] rotateMatrix(Cubie[][] orig, int degrees, char[] preChange,
                                    char[] postChange) {
         Cubie[][] rotated = new Cubie[3][3];
@@ -528,34 +503,29 @@ public class Cube {
         return rotated;
     }
 
-    /**
-     * Loops through the characters in a String of standard turning notation to apply the set of moves to the cube
-     * Checks for clockwise, double, and counterclockwise turns
-     * @param moves the moves to be applied to the cube
-     * @return the moves performed on the cube (same as {@code moves})
-     */
+
     public String performMoves(String moves) {
         for(int i = 0; i<moves.length(); i++) {
-            if(moves.substring(i, i+1) != " ") { //Only check if there is a meaningful character
+            if(moves.substring(i, i+1) != " ") {
                 if(i != moves.length()-1) {
                     if(moves.substring(i+1, i+2).compareTo("2") == 0) {
-                        //Turning twice ex. U2
+
                         turn(moves.substring(i, i+1));
                         turn(moves.substring(i, i+1));
-                        i++; //Skip the "2" for the next iteration
+                        i++;
                     }
                     else if(moves.substring(i+1,i+2).compareTo("'") == 0) {
-                        //Making a counterclockwise turn ex. U'
+
                         turn(moves.substring(i, i+2));
-                        i++; //Skip the apostrophe for the next iteration
+                        i++;
                     }
                     else {
-                        //Regular clockwise turning
+
                         turn(moves.substring(i, i+1));
                     }
                 }
                 else {
-                    //Nothing is after the turn letter, so just perform the turn
+
                     turn(moves.substring(i, i+1));
                 }
             }
@@ -563,26 +533,22 @@ public class Cube {
         return moves;
     }
 
-    /**
-     * Performs the inverse of the moves inputed as parameters. For example, if the parameter is "U' ",
-     * the moves "U" will be applied upon the cube to negate the "U' ". Helper method for use in the
-     * CubePainter class to rewind moves.
-     * @param moves the moves to be reversed
-     */
+
+//      Performs the inverse of the moves inputed as parameters
     public void reverseMoves(String moves) {
         for(int i = 0; i<moves.length(); i++) {
-            if(moves.substring(i, i+1) != " ") { //Only check if there is a meaningful character
+            if(moves.substring(i, i+1) != " ") {
                 if(i != moves.length()-1) {
                     if(moves.substring(i+1, i+2).compareTo("2") == 0) {
-                        //Turning twice ex. U2
+
                         turn(moves.substring(i, i+1));
                         turn(moves.substring(i, i+1));
-                        i++; //Skip the "2" for the next iteration
+                        i++;
                     }
                     else if(moves.substring(i+1,i+2).compareTo("'") == 0) {
                         //Making a clockwise turn ex. U
                         turn(moves.substring(i, i+1));
-                        i++; //Skip the apostrophe for the next iteration
+                        i++;
                     }
                     else {
                         //Counterclockwise turning
@@ -590,20 +556,18 @@ public class Cube {
                     }
                 }
                 else {
-                    //Nothing is after the turn letter, so perform counterclockwise turn
+
                     turn(moves.substring(i, i+1) + "'");
                 }
             }
         }
     }
 
-    /**
-     * Optimizes the {@code moves} inputed by reducing redundant and unnecessary turns or rotations.
-     * For example, "U U'" would be negated; "U U2" is simplified to "U'"; and "U U" is simplified
-     * to "U2".
-     * @param moves the String of moves to be optimized
-     * @return the optimized set of moves
-     */
+
+//      Optimizes the {@code moves} inputed by reducing redundant and unnecessary turns or rotations.
+//      For example, "U U'" would be negated; "U U2" is simplified to "U'"; and "U U" is simplified
+//     to "U2".
+
     public String optimizeMoves(String moves) {
         for(int i = 0; i<moves.length(); i++) {
             String move = moves.substring(i, i+1);
@@ -694,14 +658,8 @@ public class Cube {
         return moves;
     }
 
-    /**
-     * Generates a random scramble. \n
-     * NOTE: the scramble generated is a random move scramble, not a random state scramble. A random state
-     * scramble is generated by assembling the cube into a random state, solving the cube, and taking the
-     * reverse of the solution to display as a scramble. This method simply assembles a scramble out of
-     * the allowed set of face moves, ensuring that no move is the same as the two moves prior to it.
-     * @return a random scramble
-     */
+    // Generates a random scramble.
+
     public String randScramble() {
         String scramble = new String();
         char[] possMoves = new char[] {'U', 'D', 'R', 'L', 'F', 'B'}; //The allowed set of moves
@@ -729,14 +687,11 @@ public class Cube {
         return scramble;
     }
 
-    /**
-     * Scrambles a cube according to WCA rules (White on top, Green in front).
-     * After scrambling, returns the cube to the original position (Yellow on top, Green in front) form
-     * which a solution can be generated.
-     * @param scramble the scramble to be performed
-     */
+
+//      Scrambles a cube according to WCA rules (White on top, Green in front).
+
     public void scramble(String scramble) {
-        //Rotate the cube to get white on top, then return cube to original position at end of scramble
+
         performMoves("z2 " + scramble + " z2");
     }
 
@@ -870,8 +825,7 @@ public class Cube {
         }
 
         //Fix any edges that are incorrectly oriented in the U Layer
-        //For the sake of reducing movecount, I assigned a set of moves for each position,
-        //but a solver may simply make U turns to bring the edge in front and perform "F U' R"
+
         if(numWhiteEdgesOriented() < 5) {
             for(int i = 0; i < 3; i++) {
                 for(int j = 0; j < 3; j++) {
@@ -895,9 +849,7 @@ public class Cube {
         }
 
         //If fewer than 4 white edges reached the top layer by the end of this, some white edge was missed
-        //(This might happen, say, if bringing an edge up from the E Layer unintentionally brings down an incorrectly
-        // oriented edge in the U Layer)
-        //Recurse to oriented remaining white edges
+
         if(numWhiteEdgesOriented() < 4) {
             moves += makeSunflower();
         }
@@ -905,27 +857,20 @@ public class Cube {
         return optimizeMoves(moves);
     }
 
-    /**
-     * Utility method for makeSunflower()
-     * Prepares a slot in the U face for white edges to be brought up into the U layer without misorienting white
-     * edges already in the U layer
-     * @param x the x position of the cubie to prepare
-     * @param y the y position
-     * @param z the z position
-     * @param color the color which should not remain in the prepared slot
-     * @return moves used to prepare the edge slot
-     */
+
+//      for makeSunflower()
+
+
     public String prepareSlot(int x, int y, int z, char color) {
         int numUTurns = 0;
         CubieColor[] tempColor = cubiePos[x][y][z].getColors();
         while((tempColor[0].getColor() == color || tempColor[1].getColor() == color) && numUTurns < 5){
-            //Keep turning U until the position (x, y, z) is not occupied by a white edge
             performMoves("U");
             tempColor = cubiePos[x][y][z].getColors();
             numUTurns++;
         }
 
-        //Return appropriate amount of U turns
+
         if(numUTurns == 0 || numUTurns == 4) {
             return "";
         }
@@ -938,10 +883,10 @@ public class Cube {
         else return "U' ";
     }
 
-    /**
-     * Utility method for makeSunflower()
-     * @return the number of white edges that are currently in the U layer
-     */
+
+//      Utility method for makeSunflower()
+
+
     public int numWhiteEdgesOriented() {
         int numOriented = 0;
         for(int i = 0; i < 3; i++) {
@@ -956,11 +901,11 @@ public class Cube {
         return numOriented;
     }
 
-    /**
-     * Completes the white layer by inserting any white corners in the U layer and fixing misoriented
-     * white corners until there are no more white corners in the U layer.
-     * @return the moves used to complete the white layer
-     */
+
+//      Completes the white layer by inserting any white corners in the U layer and fixing misoriented
+//      white corners until there are no more white corners in the U layer.
+
+
     public String finishWhiteLayer() {
         String moves = new String();
         //At least check once for corners to be inserted/fixed, and repeat as necessary
@@ -977,10 +922,9 @@ public class Cube {
         return optimizeMoves(moves);
     }
 
-    /**
-     * Utility method for insertCornersinU()
-     * @return if there are any white corners in the U layer
-     */
+
+//     Utility method for insertCornersinU()
+
     public boolean whiteCornerinU() {
         for(int i = 0; i<3; i++) {
             for(int j = 0; j<3; j++) {
@@ -994,12 +938,7 @@ public class Cube {
         return false;
     }
 
-    /**
-     * Inserts any white corners that are in the U layer. First positions them to the position (2, 0, 0), then
-     * makes U turns and y rotations until the white corner is above its respective slot, and finally inserts
-     * the corner by repetitively executing R U R' U'. This is repeated of all whit corners in the U layer.
-     * @return moves used to insert white corners that are in the U layer
-     */
+
     public String insertCornersInU() {
         String moves = new String();
 
@@ -1065,10 +1004,9 @@ public class Cube {
         return moves;
     }
 
-    /**
-     * Properly inserts white corners that are in the first layer but not oriented correctly
-     * @return moves used to properly orient misoriented white corners
-     */
+
+//      Properly inserts white corners that are in the first layer but not oriented correctly
+
     public String insertMisorientedCorners() {
         String moves = new String();
         for(int i = 0; i<4; i++) {
@@ -1086,11 +1024,9 @@ public class Cube {
         return moves;
     }
 
-    /**
-     * Utility method for insertCornersInU().
-     * Checks for whether the corner cubie at (2, 0, 0) belongs in (2, 0, 2).
-     * @return true if cubie at (2, 0, 0) belongs in (2, 0, 2), else false
-     */
+
+//      Utility method for insertCornersInU().
+
     public boolean whiteCornerPrepared() {
         boolean whiteUp = false;
 
@@ -1118,13 +1054,9 @@ public class Cube {
         }
     }
 
-    /**
-     * Correctly checks whether the corner at (2, 0, 2) is solved.
-     * @param x the position to check for (although this method is only called with (2, 0, 2).
-     * @param y see above
-     * @param z see above
-     * @return true if corner is solved, else false
-     */
+
+//      Correctly checks whether the corner at (2, 0, 2) is solved.
+
     public boolean cornerInserted(int x, int y, int z) {
         if(cubiePos[x][y][z].isCornerCubie()) {
             return (cubiePos[x][y][z].getColorOfDir('D') == cubiePos[1][1][2].getColors()[0].getColor() &&
@@ -1134,10 +1066,9 @@ public class Cube {
         return false;
     }
 
-    /**
-     * Utilizes the methods insertEdgesInU() and insertMisorientedEdges() to complete the second layer
-     * @return A String for the moves used to complete the second layer
-     */
+
+//     Utilizes the methods insertEdgesInU() and insertMisorientedEdges() to complete the second layer
+
     public String insertAllEdges() {
         String moves = new String();
         //At least check once for edges to be inserted/fixed, and repeat as necessary
@@ -1154,11 +1085,9 @@ public class Cube {
         return optimizeMoves(moves);
     }
 
-    /**
-     * Checks whether any non-yellow edges remain in the U layer.
-     * (Any such edges need to be inserted into their respective slot in the second layer)
-     * @return whether there is/are non-yellow edges in the U layer
-     */
+
+//      Checks whether any non-yellow edges remain in the U layer.
+
     public boolean nonYellowEdgesInU() {
         for(int i = 0; i<3; i++) {
             for(int j = 0; j<3; j++) {
@@ -1172,11 +1101,9 @@ public class Cube {
         return false;
     }
 
-    /**
-     * Inserts all non-yellow edges in the U layer into their respective slots in the
-     * second layer using one of two algorithms
-     * @return moves used to insert non-yellow edges in the U layer
-     */
+
+//     Inserts all non-yellow edges in the U layer into their respective slots in the
+
     public String insertEdgesInU() {
         String moves = new String();
         for(int i = 0; i<3; i++) {
@@ -1232,11 +1159,7 @@ public class Cube {
         return moves;
     }
 
-    /**
-     * If there are any edges in the second layer that were inserted in the incorrect
-     * orientation, this method re-inserts them in the correct orientation
-     * @return moves used to fix edge orientations in second layer
-     */
+
     public String insertMisorientedEdges() {
         String moves = new String();
         for(int i = 0; i<4; i++) {
@@ -1258,10 +1181,7 @@ public class Cube {
         return moves;
     }
 
-    /**
-     * Utility method for yellowEdgeOrientation() and makeYellowCross()
-     * @return the number of yellow edges that are already oriented in the U layer
-     */
+
     public int numYellowEdgesOriented(){
         int numOriented = 0;
         for(int i = 0; i<3; i++) {
@@ -1273,10 +1193,7 @@ public class Cube {
         return numOriented;
     }
 
-    /**
-     * Utility method for orientLastLayer()
-     * @return the number of yellow corners that are already oriented in the U layer
-     */
+
     public int numYellowCornersOriented(){
         int numOriented = 0;
         for(int i = 0; i<3; i++) {
@@ -1288,11 +1205,8 @@ public class Cube {
         return numOriented;
     }
 
-    /**
-     * Utility method for makeYellowCross(). Determines the shape that the oriented
-     * yellow edges make.
-     * @return Dot, L, Bar, or Cross
-     */
+
+     // Utility method for makeYellowCross()
     public String yellowEdgeOrientation() {
         String status = new String();
         int numOriented = numYellowEdgesOriented();
@@ -1324,10 +1238,9 @@ public class Cube {
         return status;
     }
 
-    /**
-     * Orients all yellow edges in the U layer based on their current state.
-     * @return moves used to make the yellow cross
-     */
+
+//      Orients all yellow edges in the U layer based on their current state.
+
     public String makeYellowCross() {
         String moves = new String();
         String status = yellowEdgeOrientation();
@@ -1353,16 +1266,10 @@ public class Cube {
         return optimizeMoves(moves);
     }
 
-    /**
-     * Finishes the step of orienting the last layer by orienting all yellow corners using
-     * a beginner's method algorithm. (This has been left separate from makeYellowCross()
-     * to help beginners easily follow the steps to orient the last layer completely.)
-     * @return moves used to orient last layer pieces
-     */
+
     public String orientLastLayer() {
         String moves = new String();
         int numOriented = numYellowCornersOriented();
-        //Used while loop since Antisune case requires Sune algorithm to be perform twice for proper orientation
         while(numOriented != 4) {
             if(numOriented == 0){
                 //Turn until there is a yellow sticker on the left of the ULF piece
@@ -1380,11 +1287,9 @@ public class Cube {
                 moves += performMoves("R U R' U R U2 R' ");
             }
             else if(numOriented == 2){
-                //Turn until there is a yellow sticker on the front of the ULF piece
                 while(cubiePos[0][0][0].getDirOfColor('Y') != 'F') {
                     moves += performMoves("U ");
                 }
-                //Perform Sune algorithm to orient one corner
                 moves += performMoves("R U R' U R U2 R' ");
             }
             //Re-check the number of corners oriented
@@ -1393,15 +1298,11 @@ public class Cube {
         return optimizeMoves(moves);
     }
 
-    /**
-     * Permutes the last layer such that all oriented pieces are in the correct positions
-     * relative to each other. First permutes the corners, then the edges.
-     * @return the moves used to permute the last layer
-     */
+
     public String permuteLastLayer() {
         String moves = new String();
         //Check the number of "headlights" that exist, i.e. adjacent corners with the same color facing one direction
-        //If there are 4 headlights, the corners are already permuted
+
         int numHeadlights = 0;
         for(int i = 0; i<4; i++) {
             turn("y"); //Since we are rotating 4 times, the cube is unaffected in the end
@@ -1433,7 +1334,6 @@ public class Cube {
             numSolved = 1;
         }
         if(numSolved == 1){
-            //Use either the clockwise or counterclockwise edge rotation algorithm to solve all corners
             while(cubiePos[0][2][0].getColorOfDir('B') != cubiePos[1][2][0].getColorOfDir('B')) {
                 moves += performMoves("U ");
             }
@@ -1445,7 +1345,6 @@ public class Cube {
             }
         }
 
-        //Adjust the U layer to finish the cube!
         while(cubiePos[0][0][0].getColorOfDir('F') != cubiePos[1][0][1].getColors()[0].getColor()) {
             moves += performMoves("U ");
         }
@@ -1453,14 +1352,9 @@ public class Cube {
         return optimizeMoves(moves);
     }
 
-    /**
-     * This method allows for the painting of the cube in the GUI.
-     * All 6 faces' colors are stored in 2D arrays as character values, then all 2D arrays
-     * are inserted into a 3D array so that all faces' colors can be accessed in one method call
-     * instead of having to call 6 different methods.
-     * NOTE: This method was used prior to the paintComponent() method was implemented in this class.
-     * @return the set of all colors that define the state of the cube
-     */
+
+//      This method allows for the painting of the cube in the GUI.
+
     public char[][][] getColors() {
         char[][][] allSets = new char[6][3][3];
         //All 2D arrays are row-major
@@ -1471,9 +1365,7 @@ public class Cube {
         char[][] right = new char[3][3];
         char[][] down = new char[3][3];
 
-        //NOTE: the logic following may seem confusing because we need to store the colors as *they will be displayed*.
-        //This means, for example, that the left side of the cube will be rotated 90 degrees clockwise such that
-        //when displayed, it looks as if it is directly "connected" to the yellow (U) face.
+
 
         //Populate left colors, constant x
         for(int y = 2; y>=0; y--) {
@@ -1518,23 +1410,14 @@ public class Cube {
         return allSets;
     }
 
-    /**
-     * Changes a single color of a cubie to a new color in the given direction
-     * @param x the x position of the cubie
-     * @param y y position
-     * @param z z position
-     * @param dir the direction
-     * @param ncolor the new color
-     */
+
+//      Changes a single color of a cubie to a new color in the given direction
+
     public void setCubieColor(int x, int y, int z, char dir, char ncolor) {
         cubiePos[x][y][z].setColorOfDir(dir, ncolor);
     }
 
-    /**
-     * Outputs the position, colors, and respective directions of colors of every cubie making up the cube.
-     * Used for debugging purposes prior to GUI development.
-     * Outputs in the format: x, y, z, color1, dir1, color2, dir2, color3, dir3 (number of colors and directions dependent on cubie type)
-     */
+
     public void testTurning() {
         for(int i = 0; i<cubiePos.length; i++) {
             for(int j = 0; j<cubiePos[0].length; j++) {
@@ -1600,14 +1483,8 @@ public class Cube {
         }
     }
 
-    /**
-     * Paints the cube using methods from the AWT framework. Paints the cube in an "unfolded" manner.
-     * @param g A Graphics object
-     */
+
     public void paintComponent(Graphics g) {
-        //NOTE: the logic following may seem confusing because we need to store the colors as *they will be displayed*.
-        //This means, for example, that the left side of the cube will be rotated 90 degrees clockwise such that
-        //when displayed, it looks as if it is directly "connected" to the yellow (U) face.
 
         int xVal = 50;
         int yVal = 300;
@@ -1693,12 +1570,8 @@ public class Cube {
 
     }
 
-    /**
-     * Returns the appropriate {@code Color} based on a cubie's color for appropriate
-     * painting in the paintComponent() method.
-     * @param color the cubie color from the set {'R', 'O', 'B', 'G', 'W', 'Y'}.
-     * @return corresponding {@code Color} object
-     */
+//      Returns the appropriate {@code Color} based on a cubie's color for appropriate
+
     private Color getColor(char color) {
         switch(color) {
             case 'W': return Color.WHITE;

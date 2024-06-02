@@ -130,6 +130,6 @@
         <Polygon fx:id="upperPoly7" fill="DODGERBLUE" layoutX="464.0" layoutY="327.0" points="59.20001220703125, 129.0, 97.20001220703125, 145.0, 135.20001220703125, 120.20001220703125, 97.20001220703125, 109.0" stroke="BLACK" strokeType="INSIDE" />
         <Polygon fx:id="upperPoly4" fill="DODGERBLUE" layoutX="528.0" layoutY="283.0" points="33.20001220703125, 153.0, 71.20001220703125, 165.79998779296875, 112.9000244140625, 143.79998779296875, 71.20001220703125, 134.5999755859375" stroke="BLACK" strokeType="INSIDE" />
         <Polygon fx:id="upperPoly1" fill="DODGERBLUE" layoutX="555.0" layoutY="225.0" points="46.04998779296875, 192.5999755859375, 85.9000244140625, 201.79998779296875, 122.60003662109375, 184.79998779296875, 85.9000244140625, 174.20001220703125" stroke="BLACK" strokeType="INSIDE" />
-        <Label layoutX="575.0" layoutY="6.0" prefHeight="26.0" prefWidth="130.0" text="Manually Change Color" textFill="WHITE" />
+        <Label layoutX="575.0" layoutY="6.0" prefHeight="26.0" prefWidth="130.0" textFill="WHITE" />
     </children>
 </AnchorPane>
