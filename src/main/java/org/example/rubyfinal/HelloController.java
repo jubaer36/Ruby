@@ -6,8 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-
-
+import javafx.scene.image.ImageView;
 import java.io.IOException;
 
 public class HelloController {
@@ -19,6 +18,9 @@ public class HelloController {
     private Button manualButton;
     @FXML
     private Button tutorialButton;
+    @FXML
+    ImageView menuImage;
+
 
     @FXML
     protected void onSolverButtonClicked() {

@@ -1,0 +1,35 @@
+#LeftSidePane {
+    -fx-background-color: #373A40;
+}
+
+#tutorialButton, #manualButton, #solverButton {
+    -fx-background-color: #3572EF;
+    -fx-text-fill: white;  /* White text color for contrast */
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 3px 15px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-pref-width: 120px; /* Fixed width for all buttons */
+}
+
+#tutorialButton:hover, #manualButton:hover, #solverButton:hover {
+    -fx-background-color: darkblue;
+}
+
+#ProjectName{
+    #applicationNameLabel {
+        -fx-text-fill: White;  /* White text color */
+        -fx-font-size: 30px;  /* Font size for visibility */
+        -fx-font-weight: bold;  /* Bold font weight for emphasis */
+        -fx-padding: 10px;  /* Padding around the text */
+        -fx-background-color:#373A40;
+        /* Center the text */
+    }
+}
+
+#imagePane {
+    -fx-background-image: url("file:/D:/Project-Ruby-Final/src/main/Designer.jpeg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 400px 400px;
+}
