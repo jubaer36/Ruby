@@ -27,7 +27,7 @@ public class Tutorial {
     @FXML
     private Button step1Button , step2Button , step3Button, step4Button , step5Button , step6Button ,step7Button , intStateButton1,intStateButton2,intStateButton5,intStateButton3,intStateButton4,intStateButton6 , tryButton;
     @FXML
-    private Label stepNameLabel , intermediateTextLabel;
+    private Label stepNameLabel , intermediateTextLabel,movesLabel;
     @FXML
     private Label descTutorialTextLabel;
     @FXML
@@ -35,12 +35,14 @@ public class Tutorial {
 
     @FXML
     private ImageView tutorialImageView2 = new ImageView();
+    @FXML
+    private ImageView tutorialImageView3 = new ImageView();
 
     @FXML
     private AnchorPane holderAnchorPane;
-    Image image1,image2;
+    Image image1,image2,image3;
 
-    private String descTutorial , imageFilePath1 ,imageFilePath2;
+    private String descTutorial , imageFilePath1 ,imageFilePath2 , imageFilePathExtra;
     public static int[][][] tutorialCubeState = new int[6][3][3];
     @FXML
     void initialize(){
@@ -49,6 +51,7 @@ public class Tutorial {
         resetCubeState();
         imageFilePath1 = "/images/Step1Int0.png";
         imageFilePath2 = "/images/Step1Int0Solved.png";
+        imageFilePathExtra = "/images/Step7Int0Extra.png";
 
 
 
@@ -65,6 +68,7 @@ public class Tutorial {
         intermediateTextLabel.setVisible(false);
         tutorialImageView1.setVisible(true);
         tutorialImageView2.setVisible(true);
+        tutorialImageView3.setVisible(true);
 
         tryButton.setVisible(false);
 
@@ -1040,21 +1044,40 @@ public class Tutorial {
 //            System.out.println(currentStep + " "+ currentIntermediateStep);
             imageFilePath1 = "/images/Step"+currentStep+"Int"+currentIntermediateStep+".png";
             imageFilePath2 = "/images/Step"+currentStep+"Int"+currentIntermediateStep+"Solved.png";
+            imageFilePathExtra = "/images/Step"+currentStep+"Int"+currentIntermediateStep+"Extra.png";
+
             InputStream inputStream1 = getClass().getResourceAsStream(imageFilePath1);
             InputStream inputStream2 = getClass().getResourceAsStream(imageFilePath2);
+            InputStream inputStream3 = getClass().getResourceAsStream(imageFilePathExtra);
+            if(inputStream3 == null){
+                tutorialImageView3.setVisible(false);
+//                throw new FileNotFoundException("Image file Extra  not found");
+            }
+            else {
+                image3 = new Image(inputStream3);
+                tutorialImageView3.setImage(image3);
+                tutorialImageView3.setVisible(true);
+            }
 
             // Ensure that the images are found
-            if (inputStream1 == null || inputStream2 == null) {
-                throw new FileNotFoundException("Image file not found");
+            if (inputStream1 != null) {
+                image1 = new Image(inputStream1);
+                tutorialImageView1.setImage(image1);
+            }
+            if (inputStream2 != null) {
+                image2 = new Image(inputStream2);
+                tutorialImageView2.setImage(image2);
+            }
+            if(currentStep ==4 && currentIntermediateStep ==0){
+                tutorialImageView1.setY(150);
+            }
+            else{
+                tutorialImageView1.setY(0);
             }
 
             // Load the images using the InputStream
-            image1 = new Image(inputStream1);
-            image2 = new Image(inputStream2);
 
-            // Set the images to the ImageViews
-            tutorialImageView1.setImage(image1);
-            tutorialImageView2.setImage(image2);
+
 
 
         } catch (Exception e) {
