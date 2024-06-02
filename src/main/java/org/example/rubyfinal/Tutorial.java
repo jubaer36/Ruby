@@ -6,6 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -16,9 +18,14 @@ public class Tutorial {
     @FXML
     private Button step1Button , step2Button , step3Button, step4Button , step5Button , step6Button ,step7Button , intStateButton1,intStateButton2,intStateButton5,intStateButton3,intStateButton4,intStateButton6 , tryButton;
     @FXML
-    private Label stepNameLabel;
+    private Label stepNameLabel , intermediateTextLabel;
+    @FXML
+    private TextArea descTutorialTextArea;
 
+    @FXML
+    private AnchorPane holderAnchorPane;
 
+    private String descTutorial;
     public static int[][][] tutorialCubeState = new int[6][3][3];
     @FXML
     void initialize(){
@@ -36,6 +43,9 @@ public class Tutorial {
         intStateButton4.setVisible(false);
         intStateButton5.setVisible(false);
         intStateButton6.setVisible(false);
+        descTutorialTextArea.setVisible(false);
+        intermediateTextLabel.setVisible(false);
+
         tryButton.setVisible(false);
 
     }
@@ -160,6 +170,8 @@ public class Tutorial {
         resetCubeState();
         tryButton.setVisible(true);
         if(currentStep == 1){
+            descTutorial = "The most complicated case is when three edges are done and the last one is oriented wrong. This is the fastest way to flip an edge: F takes the edge to the equator, U' moves the empty spot in place, R moves the edge up in the top again, now well-oriented, U restores the position.";
+
             tutorialCubeState[0][0][1]=4;
             tutorialCubeState[0][1][1]= 0;
 
@@ -177,6 +189,7 @@ public class Tutorial {
             tutorialCubeState[4][0][1]=4;
             tutorialCubeState[4][1][0]=4;
             tutorialCubeState[4][1][2]=4;
+
 
         }
         else if(currentStep == 2){

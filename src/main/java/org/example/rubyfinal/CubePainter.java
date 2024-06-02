@@ -143,6 +143,9 @@ public class CubePainter extends JPanel implements ActionListener, ChangeListene
                 }
             }
         });
+        start.doClick();
+        animSpeed.setValue(10);
+        frameTimer.setDelay(DELAY/animSpeed.getValue());
     }
 
     /**
@@ -205,6 +208,8 @@ public class CubePainter extends JPanel implements ActionListener, ChangeListene
         animSpeed = new JSlider(1, 10); animSpeed.setValue(1); //Slider values range from 1 to 10
         animSpeed.setMinorTickSpacing(1); animSpeed.setPaintTicks(true);
         animSpeed.setSnapToTicks(true);
+
+
         animSpeed.setLocation(500, 0); animSpeed.setSize(200, 40);
         add(animSpeed);
         animSpeed.addChangeListener(this);
@@ -243,6 +248,10 @@ public class CubePainter extends JPanel implements ActionListener, ChangeListene
         add(setInputs);
         setInputs.addActionListener(this);
         setInputs.setVisible(false); setInputs.setEnabled(false);
+
+
+
+
     }
 
     /**
